@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".login"
+    android:orientation="vertical">
+    <!-- Titulo -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+        android:fontFamily="@font/amaranth_bold"
+        android:textSize="70sp"
+        android:textColor="@color/purple"
+        android:text="InvenTory"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:fontFamily="@font/catamaran_medium"
+        android:textColor="@color/purple"
+        android:textSize="30sp"
+        android:text="Inicia Sesión"/>
+
+    <!-- Formulario -->
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="17sp"
+            android:text="Gmail"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_card"
+            android:layout_marginBottom="20dp"
+            android:hint="Correo"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="17sp"
+            android:text="Contraseña"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_card"
+            android:hint="Contraseña"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:layout_gravity="right"
+            android:text="Olvidaste tu contraseña?"/>
+    </LinearLayout>
+
+    <!-- Boton -->
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/purple"
+        android:fontFamily="@font/catamaran_semibold"
+        android:textSize="20sp"
+        android:text="Ingresar"/>
+
+    <!-- Link a registro -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Si aun no tienes una cuenta"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/purple"
+            android:text="  Registrate"/>
+    </LinearLayout>
+
+</LinearLayout>

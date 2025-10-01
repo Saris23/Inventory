@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="title" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:fontFamily">@font/amaranth_bold</item>
+        <item name="android:textSize">34sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="subtitle">
+        <item name="fontFamily">@font/catamaran_regular</item>
+    </style>
+</resources>
