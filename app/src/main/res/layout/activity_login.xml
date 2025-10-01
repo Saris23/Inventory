@@ -40,6 +40,7 @@
             android:textSize="17sp"
             android:text="Gmail"/>
         <EditText
+            android:id="@+id/etCorreo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_card"
@@ -51,11 +52,13 @@
             android:textSize="17sp"
             android:text="Contraseña"/>
         <EditText
+            android:id="@+id/etContrasena"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_card"
             android:hint="Contraseña"/>
         <TextView
+            android:id="@+id/txtRecuperarcontra"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
@@ -65,6 +68,7 @@
 
     <!-- Boton -->
     <Button
+        android:id="@+id/btnIngresar"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
@@ -86,6 +90,7 @@
             android:layout_height="wrap_content"
             android:text="Si aun no tienes una cuenta"/>
         <TextView
+            android:id="@+id/txtRegistro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/purple"

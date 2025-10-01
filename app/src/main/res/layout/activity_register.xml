@@ -47,6 +47,7 @@
             android:textSize="17sp"
             android:text="Nombre"/>
         <EditText
+            android:id="@+id/etNombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_card"
@@ -58,6 +59,7 @@
             android:textSize="17sp"
             android:text="Gmail"/>
         <EditText
+            android:id="@+id/etCorreo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_card"
@@ -69,6 +71,7 @@
             android:textSize="17sp"
             android:text="Contraseña"/>
         <EditText
+            android:id="@+id/etContrasena"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_card"
@@ -80,6 +83,7 @@
             android:textSize="17sp"
             android:text="Confirmar contraseña"/>
         <EditText
+            android:id="@+id/etConfirmacontra"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_card"
@@ -89,6 +93,7 @@
 
     <!-- Boton -->
     <Button
+        android:id="@+id/btnRegistrar"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -110,6 +115,7 @@
             android:layout_height="wrap_content"
             android:text="Ya te registraste?"/>
         <TextView
+            android:id="@+id/txtInicioSesion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/purple"
