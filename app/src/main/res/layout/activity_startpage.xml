@@ -37,7 +37,7 @@
         android:text="Registrate"
         android:fontFamily="@font/catamaran_semibold"
         android:textSize="20sp"
-        android:textColor="@android:color/red"
+        android:textColor="@color/red"
         android:backgroundTint="@color/white"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="170dp"/>
@@ -50,7 +50,7 @@
         android:text="Inicia sesión"
         android:fontFamily="@font/catamaran_semibold"
         android:textSize="20sp"
-        android:textColor="@android:color/red"
+        android:textColor="@color/red"
         android:backgroundTint="@color/white"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="35dp"/>
