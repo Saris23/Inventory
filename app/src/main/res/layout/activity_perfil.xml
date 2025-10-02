@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".perfil">
+
+    <!-- Titulo1 -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:text="Datos del perfil"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="45dp"
+        android:textStyle="bold"
+        android:fontFamily="@font/archivo_variablefont_wdth_wght"
+        android:textSize="20sp"
+
+        />
+
+
+
+    <!-- Formulario usuario -->
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="45dp"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="17sp"
+            android:text="Nombre:"/>
+
+        <EditText
+            android:id="@+id/etNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_card"
+            android:layout_marginBottom="20dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="17sp"
+            android:text="Gmail:"/>
+        <EditText
+            android:id="@+id/etGmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_card" />
+
+    </LinearLayout>
+
+    <!-- Titulo2 -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="Datos del negocio"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="45dp"
+        android:textStyle="bold"/>
+
+
+    <!-- Formulario Negocio -->
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="45dp"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="17sp"
+            android:text="Nombre del negocio:"/>
+
+        <EditText
+            android:id="@+id/etNombreNegocio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_card"
+            android:layout_marginBottom="20dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="17sp"
+            android:text="Descripción:"/>
+        <EditText
+            android:id="@+id/etDescripcion"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:background="@drawable/bg_card" />
+
+    </LinearLayout>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="30dp"
+            android:layout_height="50dp"
+            android:text="Guardar"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="@color/naranja"
+            />
+
+
+
+
+</LinearLayout>
