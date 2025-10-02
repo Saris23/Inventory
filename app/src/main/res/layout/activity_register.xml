@@ -11,14 +11,14 @@
     <!-- Header -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="170dp"
+        android:layout_height="160dp"
         android:layout_gravity="center"
         android:background="@drawable/bg_header_orange"
         android:orientation="vertical">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="45dp"
+            android:layout_marginTop="42dp"
             android:layout_gravity="center_horizontal"
             android:fontFamily="@font/catamaran_medium"
             android:textSize="37sp"
@@ -38,13 +38,43 @@
     <LinearLayout
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:layout_gravity="center"
         android:orientation="vertical">
+        <!-- Apartado de documento -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="17sp"
+            android:textSize="16sp"
+            android:text="Documento"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal">
+            <EditText
+                android:id="@+id/txtDocument"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:background="@drawable/bg_card"
+                android:hint="Documento"/>
+            <Space
+                android:layout_width="15dp"
+                android:layout_height="wrap_content"/>
+            <Spinner
+                android:id="@+id/spDocument"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="end|right"
+                android:background="@drawable/bg_card"/>
+        </LinearLayout>
+
+        <!-- Campos de txt -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
             android:text="Nombre"/>
         <EditText
             android:id="@+id/txtName"
@@ -57,7 +87,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="17sp"
+            android:textSize="16sp"
             android:text="Gmail"/>
         <EditText
             android:id="@+id/txtEmail"
@@ -70,7 +100,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="17sp"
+            android:textSize="16sp"
             android:text="Contraseña"/>
         <EditText
             android:id="@+id/txtPassword"
@@ -82,14 +112,13 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="17sp"
+            android:textSize="16sp"
             android:text="Confirmar contraseña"/>
         <EditText
             android:id="@+id/txtConfirmpass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_card"
-            android:layout_marginBottom="20dp"
             android:hint="Contraseña"/>
     </LinearLayout>
 
@@ -98,7 +127,7 @@
         android:id="@+id/btnRegistrar"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="25dp"
         android:layout_gravity="center"
         android:backgroundTint="@color/red"
         android:fontFamily="@font/catamaran_semibold"
@@ -109,7 +138,7 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="7dp"
         android:layout_gravity="center"
         android:orientation="horizontal">
         <TextView

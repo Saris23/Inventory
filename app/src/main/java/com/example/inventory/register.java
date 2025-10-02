@@ -4,8 +4,10 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -18,7 +20,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class register extends AppCompatActivity {
-    // conexion con firebase y la base de datos
+
+    String[] arrdocument={"C.C", "C.E"};
+    // Variable global para la conexion de la fireBase firestore
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
     @Override
@@ -38,6 +42,10 @@ public class register extends AppCompatActivity {
         EditText txtCorreo = findViewById(R.id.txtEmail);
         EditText txtContra = findViewById(R.id.txtPassword);
         EditText txtConfirma = findViewById(R.id.txtConfirmpass);
+        EditText txtDocumento = findViewById(R.id.txtDocument);
+        Spinner spDoc = findViewById(R.id.spDocument);
+        // adapter para las opciones del spinner
+        spDoc.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1,arrdocument));
 
         // boton del link de iniciar sesion
         btnInicio.setOnClickListener(view ->{
