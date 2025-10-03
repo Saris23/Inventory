@@ -11,18 +11,29 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class register extends AppCompatActivity {
-
     String[] arrdocument={"C.C", "C.E"};
-    // Variable global para la conexion de la fireBase firestore
+    // Variable global para la conexion de fireBase
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
     @Override
@@ -45,11 +56,13 @@ public class register extends AppCompatActivity {
         EditText txtDocumento = findViewById(R.id.txtDocument);
         Spinner spDoc = findViewById(R.id.spDocument);
         // adapter para las opciones del spinner
-        spDoc.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1,arrdocument));
+        spDoc.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,arrdocument));
+        db = FirebaseFirestore.getInstance();
+        mAuth = FirebaseAuth.getInstance();
 
+        Intent inicio = new Intent(register.this, login.class);
         // boton del link de iniciar sesion
         btnInicio.setOnClickListener(view ->{
-            Intent inicio = new Intent(register.this, login.class);
             startActivity(inicio);
             finish();
         });
@@ -57,24 +70,72 @@ public class register extends AppCompatActivity {
         // boton para registrar al usuario
         btnRegistro.setOnClickListener(view ->{
             String nombre = txtNombre.getText().toString().trim();
+            String documento = txtDocumento.getText().toString().trim();
             String email = txtCorreo.getText().toString().trim();
             String password = txtContra.getText().toString().trim();
             String confirmPassword = txtConfirma.getText().toString().trim();
 
-            if (TextUtils.isEmpty(nombre) || TextUtils.isEmpty(email) || TextUtils.isEmpty(password) || TextUtils.isEmpty(confirmPassword)) {
-                Toast.makeText(this, "Complete todos los campos", Toast.LENGTH_SHORT).show();
+            // verifica que no hayan campos no esten vacios
+            if (nombre.isEmpty() || documento.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+                Toast.makeText(register.this, "Debe llenar todos los campos", Toast.LENGTH_SHORT).show();
                 return;
             }
-
+            // verificar que las contraseñas coincidan
             if (!password.equals(confirmPassword)) {
-                Toast.makeText(this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
+                Toast.makeText(register.this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
+                return;
             }
+            // Registro de usuario
+            mAuth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            if (user != null) {
 
-            try {
+                                // Validar que el documento no exista
+                                db.collection("usuarios")
+                                        .whereEqualTo("documento", documento)
+                                        .get()
+                                        .addOnCompleteListener(task1 -> {
+                                            if (task1.isSuccessful()) {
+                                                if (task1.getResult().isEmpty()) {
+                                                    // Crear el mapa del usuario
+                                                    Map<String, Object> usuario = new HashMap<>();
+                                                    usuario.put("documento", documento);
+                                                    usuario.put("nombre", nombre);
+                                                    usuario.put("gmail", email);
+                                                    usuario.put("uid", user.getUid()); // Ligamos con authentication usando el UID
 
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
+                                                    // Guardar en Firestore usando el UID como id del documento
+                                                    db.collection("usuarios")
+                                                            .document(user.getUid())
+                                                            .set(usuario)
+                                                            .addOnSuccessListener(aVoid -> {
+                                                                Toast.makeText(this, "Usuario registrado correctamente", Toast.LENGTH_SHORT).show();
+                                                                startActivity(inicio);
+                                                                finish();
+                                                            })
+                                                            .addOnFailureListener(e -> {
+                                                                Toast.makeText(this, "Error al guardar el usuario", Toast.LENGTH_SHORT).show();
+                                                            });
+                                                } else {
+                                                    Toast.makeText(this, "El documento ya está registrado", Toast.LENGTH_SHORT).show();
+                                                }
+                                            } else {
+                                                Toast.makeText(this, "Error al verificar documento", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+                            }
+
+                        } else {
+                            if (task.getException() instanceof FirebaseAuthUserCollisionException) {
+                                Toast.makeText(this, "Este correo ya está registrado", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(this, "Error: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    });
+
         });
     }
 }
