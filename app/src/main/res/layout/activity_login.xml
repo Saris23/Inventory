@@ -89,12 +89,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Si aun no tienes una cuenta"/>
-        <TextView
-            android:id="@+id/txtRegistro"
+        <Button
+            android:id="@+id/btnRegistro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/purple"
-            android:text="  Registrate"/>
+            android:backgroundTint="@color/vacio"
+            android:padding="5dp"
+            android:text="Registrate"/>
     </LinearLayout>
 
 </LinearLayout>
