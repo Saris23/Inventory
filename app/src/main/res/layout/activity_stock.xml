@@ -6,14 +6,84 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/naranja1"
     tools:context=".stock">
+
+    <!-- Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:orientation="horizontal"
+        android:background="@color/naranja1">
+
+        <!-- Menu -->
+        <ImageButton
+            android:id="@+id/btnMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/vacio"
+            android:src="@drawable/ic_menu" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="63dp"
+            android:layout_marginTop="18dp"
+            android:text="InvenTory"
+            android:fontFamily="@font/amaranth_bold"
+            android:textSize="43sp"
+            android:textColor="@color/white"/>
+    </LinearLayout>
+
+    <!-- Título Stock -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="35dp"
         android:fontFamily="@font/amaranth_bold"
-        android:textSize="50sp"
+        android:textSize="43sp"
+        android:textColor="@color/white"
         android:text="Stock"/>
+
+    <!-- Subtítulo -->
+    <TextView
+        android:id="@+id/txtSub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Manten el inventario de tu tienda al dia!"
+        android:layout_marginLeft="35dp"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:fontFamily="@font/poppins_regular"
+        android:layout_marginTop="4dp"/>
+
+    <!-- Botón Agregar -->
+    <Button
+        android:id="@+id/btnAgregar"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Agregar"
+        android:fontFamily="@font/catamaran_semibold"
+        android:textSize="17sp"
+        android:textColor="@color/naranja2"
+        android:backgroundTint="@color/white"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="62dp"/>
+
+    <!-- Botón Editar -->
+    <Button
+        android:id="@+id/btnEditar"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Editar"
+        android:fontFamily="@font/catamaran_semibold"
+        android:textSize="17sp"
+        android:textColor="@color/naranja2"
+        android:backgroundTint="@color/white"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="25dp"/>
 
 </LinearLayout>

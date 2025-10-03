@@ -15,15 +15,15 @@
         android:layout_marginTop="100dp"
         android:fontFamily="@font/amaranth_bold"
         android:textSize="70sp"
-        android:textColor="@color/purple"
+        android:textColor="@color/naranja2"
         android:text="InvenTory"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_gravity="center"
-        android:fontFamily="@font/catamaran_medium"
-        android:textColor="@color/purple"
+        android:fontFamily="@font/catamaran_regular"
+        android:textColor="@color/naranja2"
         android:textSize="30sp"
         android:text="Inicia Sesión"/>
 
@@ -37,32 +37,39 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="17sp"
+            android:textSize="16sp"
+            android:fontFamily="@font/archivo_regular"
             android:text="Gmail"/>
         <EditText
             android:id="@+id/etCorreo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
             android:background="@drawable/bg_card"
             android:layout_marginBottom="20dp"
-            android:hint="Correo"/>
+            android:fontFamily="@font/archivo_regular"
+            android:hint="Ingresa tu correo electronico"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="17sp"
+            android:textSize="16sp"
+            android:fontFamily="@font/archivo_regular"
             android:text="Contraseña"/>
         <EditText
             android:id="@+id/etContrasena"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
             android:background="@drawable/bg_card"
-            android:hint="Contraseña"/>
+            android:fontFamily="@font/archivo_regular"
+            android:hint="Ingresa tu contraseña"/>
         <TextView
             android:id="@+id/txtRecuperarcontra"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
             android:layout_gravity="right"
+            android:fontFamily="@font/archivo_regular"
             android:text="Olvidaste tu contraseña?"/>
     </LinearLayout>
 
@@ -73,9 +80,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
         android:layout_gravity="center"
-        android:backgroundTint="@color/purple"
-        android:fontFamily="@font/catamaran_semibold"
-        android:textSize="20sp"
+        android:backgroundTint="@color/naranja2"
+        android:fontFamily="@font/archivo_bold"
+        android:textSize="17sp"
         android:text="Ingresar"/>
 
     <!-- Link a registro -->
@@ -88,12 +95,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Si aun no tienes una cuenta"/>
+            android:fontFamily="@font/archivo_regular"
+            android:text="Si aun no tienes una cuenta,"/>
         <Button
             android:id="@+id/btnRegistro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/purple"
+            android:textColor="@color/naranja1"
+            android:fontFamily="@font/archivo_regular"
             android:backgroundTint="@color/vacio"
             android:padding="5dp"
             android:text="Registrate"/>

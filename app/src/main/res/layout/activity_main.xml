@@ -12,9 +12,9 @@
     <!-- Header -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="120dp"
         android:orientation="horizontal"
-        android:background="@color/purple">
+        android:background="@drawable/fondo_degradado2">
 
         <!-- Menu -->
         <ImageButton
@@ -28,16 +28,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginLeft="63dp"
+            android:layout_marginTop="18dp"
             android:text="InvenTory"
             android:fontFamily="@font/amaranth_bold"
-            android:textSize="50sp"
+            android:textSize="43sp"
             android:textColor="@color/white"/>
 
     </LinearLayout>
     <View
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@drawable/bg_header"/>
+        android:layout_height="40dp"
+        android:background="@drawable/degradado_mini"/>
 
     <!-- Titulo(saludo) -->
     <TextView
@@ -46,7 +48,7 @@
         android:layout_height="wrap_content"
         android:text="Hola, Pachito"
         android:textColor="@android:color/black"
-        android:textSize="23sp"
+        android:textSize="26sp"
         android:fontFamily="@font/catamaran_semibold"
         android:textStyle="bold"
         android:layout_gravity="center_horizontal"
@@ -60,6 +62,7 @@
         android:text="Empieza tu día con las mejores ventas"
         android:textColor="@color/gray"
         android:textSize="14sp"
+        android:fontFamily="@font/archivo_medium"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="4dp"/>
 
@@ -79,8 +82,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Venta del día:"
+            android:fontFamily="@font/archivo_bold"
             android:textSize="16sp"
-            android:textColor="@color/black"/>
+            android:textColor="@color/naranja2"/>
 
         <TextView
             android:id="@+id/txtVenta"
@@ -89,31 +93,39 @@
             android:text="$0"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:textColor="@color/black"/>
+            android:textColor="@color/naranja2"/>
     </LinearLayout>
 
-    <!-- Fecha -->
+    <!-- Tarjeta de fecha -->
     <LinearLayout
         android:id="@+id/layoutFecha"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp">
+        android:padding="16dp"
+        android:background="@drawable/bg_card"
+        android:layout_marginTop="24dp"
+        android:layout_marginHorizontal="40dp">
 
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/ic_calendar"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Fecha:"
+            android:fontFamily="@font/archivo_bold"
+            android:textSize="16sp"
+            android:textColor="@color/naranja1"/>
 
         <TextView
             android:id="@+id/txtFecha"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Fecha: 00 / 00 / 00"
+            android:text="00/00/00"
             android:textSize="16sp"
-            android:layout_marginStart="8dp"/>
+            android:textStyle="bold"
+            android:textColor="@color/naranja1"/>
     </LinearLayout>
+
 
     <!-- Botón Iniciar Venta -->
     <Button
@@ -122,9 +134,9 @@
         android:layout_height="wrap_content"
         android:text="Iniciar Venta"
         android:fontFamily="@font/catamaran_semibold"
-        android:textSize="20sp"
+        android:textSize="17sp"
         android:textColor="@android:color/white"
-        android:backgroundTint="@color/purple"
+        android:backgroundTint="@color/naranja1"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="62dp"/>
 
@@ -135,7 +147,7 @@
         android:layout_height="wrap_content"
         android:text="Cerrar Venta"
         android:fontFamily="@font/catamaran_semibold"
-        android:textSize="20sp"
+        android:textSize="17sp"
         android:textColor="@android:color/white"
         android:backgroundTint="@color/black"
         android:layout_gravity="center_horizontal"

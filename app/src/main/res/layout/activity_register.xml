@@ -11,41 +11,60 @@
     <!-- Header -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="160dp"
+        android:layout_height="169dp"
         android:layout_gravity="center"
-        android:background="@drawable/bg_header_orange"
+        android:background="@drawable/fondo_degradado2"
         android:orientation="vertical">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="42dp"
+            android:layout_marginTop="58dp"
             android:layout_gravity="center_horizontal"
-            android:fontFamily="@font/catamaran_medium"
-            android:textSize="37sp"
+            android:fontFamily="@font/catamaran_regular"
+            android:textSize="35sp"
             android:textColor="@color/white"
             android:text="Crea una cuenta nueva"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
             android:layout_gravity="center_horizontal"
-            android:fontFamily="@font/catamaran_medium"
-            android:textSize="20sp"
+            android:fontFamily="@font/poppins_light"
+            android:textSize="18sp"
             android:textColor="@color/white"
             android:text="Unete a nosotros y maneja tu negocio"/>
     </LinearLayout>
 
-    <!-- Formulario -->
+    <!-- Formulario registro-->
     <LinearLayout
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:layout_gravity="center"
         android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:fontFamily="@font/archivo_regular"
+            android:text="Nombre"/>
+        <EditText
+            android:id="@+id/txtName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_card"
+            android:layout_marginBottom="20dp"
+            android:inputType="textPersonName"
+            android:fontFamily="@font/archivo_regular"
+            android:hint="Ingresa tu nombre"/>
+
         <!-- Apartado de documento -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="16sp"
+            android:fontFamily="@font/archivo_regular"
             android:text="Documento"/>
         <LinearLayout
             android:layout_width="match_parent"
@@ -58,6 +77,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:background="@drawable/bg_card"
+                android:fontFamily="@font/archivo_regular"
                 android:hint="Documento"/>
             <Space
                 android:layout_width="15dp"
@@ -75,19 +95,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="16sp"
-            android:text="Nombre"/>
-        <EditText
-            android:id="@+id/txtName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_card"
-            android:layout_marginBottom="20dp"
-            android:inputType="textPersonName"
-            android:hint="Nombre"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"
+            android:fontFamily="@font/archivo_regular"
             android:text="Gmail"/>
         <EditText
             android:id="@+id/txtEmail"
@@ -96,11 +104,13 @@
             android:background="@drawable/bg_card"
             android:layout_marginBottom="20dp"
             android:inputType="textEmailAddress"
-            android:hint="Correo"/>
+            android:fontFamily="@font/archivo_regular"
+            android:hint="Ingresa tu correo electronico"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="16sp"
+            android:fontFamily="@font/archivo_regular"
             android:text="Contraseña"/>
         <EditText
             android:id="@+id/txtPassword"
@@ -108,18 +118,21 @@
             android:layout_height="wrap_content"
             android:background="@drawable/bg_card"
             android:layout_marginBottom="20dp"
-            android:hint="Contraseña"/>
+            android:fontFamily="@font/archivo_regular"
+            android:hint="Crea una contraseña"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="16sp"
+            android:fontFamily="@font/archivo_regular"
             android:text="Confirmar contraseña"/>
         <EditText
             android:id="@+id/txtConfirmpass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_card"
-            android:hint="Contraseña"/>
+            android:fontFamily="@font/archivo_regular"
+            android:hint="Confirma tu contraseña"/>
     </LinearLayout>
 
     <!-- Boton -->
@@ -129,9 +142,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:layout_gravity="center"
-        android:backgroundTint="@color/red"
-        android:fontFamily="@font/catamaran_semibold"
-        android:textSize="20sp"
+        android:backgroundTint="@color/naranja1"
+        android:fontFamily="@font/archivo_bold"
+        android:textSize="17sp"
         android:text="Registrar"/>
 
     <!-- Link a registro -->
@@ -144,6 +157,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/archivo_regular"
             android:text="Ya te registraste?"/>
         <Button
             android:id="@+id/txtInicioS"
@@ -151,7 +165,8 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/vacio"
             android:padding="5dp"
-            android:textColor="@color/purple"
+            android:textColor="@color/naranja2"
+            android:fontFamily="@font/archivo_regular"
             android:text="Inicia sesión"/>
     </LinearLayout>
 

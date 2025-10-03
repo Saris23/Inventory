@@ -8,19 +8,57 @@
     android:layout_height="match_parent"
     tools:context=".perfil">
 
+    <!-- Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:orientation="horizontal"
+        android:background="@color/naranja2">
+
+        <!-- Menu -->
+        <ImageButton
+            android:id="@+id/btnMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/vacio"
+            android:src="@drawable/ic_menu" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="63dp"
+            android:layout_marginTop="18dp"
+            android:text="InvenTory"
+            android:fontFamily="@font/amaranth_bold"
+            android:textSize="43sp"
+            android:textColor="@color/white"/>
+    </LinearLayout>
+
+    <!-- Título Perfil -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="45dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/amaranth_bold"
+        android:textSize="43sp"
+        android:textColor="@color/black"
+        android:text="Perfil"/>
+
     <!-- Titulo1 -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:text="Datos del perfil"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:layout_marginLeft="45dp"
         android:textStyle="bold"
         android:fontFamily="@font/archivo_variablefont_wdth_wght"
-        android:textSize="20sp"
+        android:textSize="17sp"
 
         />
-
 
 
     <!-- Formulario usuario -->
@@ -28,7 +66,7 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="45dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="7dp"
         android:orientation="vertical">
         <TextView
             android:layout_width="match_parent"
@@ -57,11 +95,13 @@
 
     <!-- Titulo2 -->
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:text="Datos del negocio"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="45dp"
+        android:textSize="17sp"
+        android:fontFamily="@font/archivo_variablefont_wdth_wght"
         android:textStyle="bold"/>
 
 
@@ -70,7 +110,7 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="45dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="7dp"
         android:orientation="vertical">
         <TextView
             android:layout_width="match_parent"
@@ -102,8 +142,8 @@
             android:layout_marginRight="30dp"
             android:layout_height="50dp"
             android:text="Guardar"
-            android:layout_marginTop="30dp"
-            android:backgroundTint="@color/naranja"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/naranja2"
             />
 
 
