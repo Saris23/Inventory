@@ -1,12 +1,15 @@
 package com.example.inventory;
 
 import android.os.Bundle;
+import android.widget.ImageButton;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.example.inventory.base.ButtonMenu;
 
 public class perfil extends AppCompatActivity {
 
@@ -20,5 +23,7 @@ public class perfil extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        ImageButton btnMenu = findViewById(R.id.btnMenu);
+        ButtonMenu.setupMenu(btnMenu, this);
     }
 }
