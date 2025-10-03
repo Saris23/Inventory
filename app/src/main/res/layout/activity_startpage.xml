@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".startpage"
-    android:background="@drawable/bg_header_orange"
+    android:background="@drawable/fondo_degradado"
     android:orientation="vertical">
 
     <!-- Titulo -->
@@ -15,9 +15,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="150dp"
         android:layout_gravity="center_horizontal"
-        android:fontFamily="@font/catamaran_regular"
+        android:fontFamily="@font/archivo_regular"
         android:textColor="@color/white"
-        android:textSize="30sp"
+        android:textSize="28sp"
         android:text="Bienvenido a"/>
     <TextView
         android:layout_width="wrap_content"
@@ -25,33 +25,33 @@
         android:layout_marginTop="10dp"
         android:layout_gravity="center"
         android:fontFamily="@font/amaranth_bold"
-        android:textSize="70sp"
+        android:textSize="78sp"
         android:textColor="@color/white"
         android:text="InvenTory"/>
 
     <!-- Botón registro -->
     <Button
         android:id="@+id/btnRegistrate"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
+        android:layout_width="210dp"
+        android:layout_height="60dp"
         android:text="Registrate"
-        android:fontFamily="@font/catamaran_semibold"
+        android:fontFamily="@font/archivo_bold"
         android:textSize="20sp"
-        android:textColor="@color/red"
+        android:textColor="@color/naranja2"
         android:backgroundTint="@color/white"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="170dp"/>
+        android:layout_marginTop="150dp"/>
 
     <!-- Botón inicio sesion -->
     <Button
         android:id="@+id/btnIniciaSesion"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
+        android:layout_width="210dp"
+        android:layout_height="60dp"
         android:text="Inicia sesión"
-        android:fontFamily="@font/catamaran_semibold"
+        android:fontFamily="@font/archivo_bold"
         android:textSize="20sp"
-        android:textColor="@color/red"
+        android:textColor="@color/naranja2"
         android:backgroundTint="@color/white"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="35dp"/>
+        android:layout_marginTop="40dp"/>
 </LinearLayout>
