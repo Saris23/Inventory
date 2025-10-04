@@ -34,7 +34,7 @@ import java.util.Map;
 public class register extends AppCompatActivity {
     String[] arrdocument={"C.C", "C.E"};
     // Variable global para la conexion de fireBase
-    private FirebaseAuth mAuth;
+    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private FirebaseFirestore db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +58,6 @@ public class register extends AppCompatActivity {
         // adapter para las opciones del spinner
         spDoc.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,arrdocument));
         db = FirebaseFirestore.getInstance();
-        mAuth = FirebaseAuth.getInstance();
 
         Intent inicio = new Intent(register.this, login.class);
         // boton del link de iniciar sesion

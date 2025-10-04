@@ -41,7 +41,7 @@
             android:fontFamily="@font/archivo_regular"
             android:text="Gmail"/>
         <EditText
-            android:id="@+id/etCorreo"
+            android:id="@+id/txtCorreo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="9dp"
@@ -56,7 +56,7 @@
             android:fontFamily="@font/archivo_regular"
             android:text="Contraseña"/>
         <EditText
-            android:id="@+id/etContrasena"
+            android:id="@+id/txtContrasena"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="9dp"
