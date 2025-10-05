@@ -66,60 +66,79 @@ public class register extends AppCompatActivity {
             finish();
         });
 
-        // boton para registrar al usuario
-        btnRegistro.setOnClickListener(view ->{
+        btnRegistro.setOnClickListener(v -> {
             String nombre = txtNombre.getText().toString().trim();
             String documento = txtDocumento.getText().toString().trim();
             String email = txtCorreo.getText().toString().trim();
             String password = txtContra.getText().toString().trim();
             String confirmPassword = txtConfirma.getText().toString().trim();
 
-            // verifica que no hayan campos no esten vacios
+            // Validaciones básicas
             if (nombre.isEmpty() || documento.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
                 Toast.makeText(register.this, "Debe llenar todos los campos", Toast.LENGTH_SHORT).show();
                 return;
             }
-            // verificar que las contraseñas coincidan
             if (!password.equals(confirmPassword)) {
                 Toast.makeText(register.this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
                 return;
             }
-            // Registro de usuario
-            mAuth.createUserWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(task -> {
-                        if (task.isSuccessful()) {
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            if (user != null) {
-                                // aun no funciona (se busca guardar el usuario en el firestore ligado al mismo UID)
-                                Map<String, Object> userMap = new HashMap<>();
-                                userMap.put("documento", documento);
-                                userMap.put("nombre", nombre);
-                                userMap.put("gmail", email);
-                                //userMap.put("uid", user.getUid());
 
-                                // Guarda el documento bajo la colección 'usuarios' con el UID como ID
-                                db.collection("usuarios")
-                                        .document(user.getUid())
-                                        .set(userMap)
-                                        .addOnSuccessListener(aVoid -> {
-                                            Toast.makeText(this, "Registro exitoso", Toast.LENGTH_SHORT).show();
-                                            startActivity(inicio);
-                                            finish();
-                                        })
-                                        .addOnFailureListener(e -> {
-                                            Toast.makeText(this, "Error al guardar usuario", Toast.LENGTH_SHORT).show();
-                                        });
-                            }
-
-                        } else {
-                            if (task.getException() instanceof FirebaseAuthUserCollisionException) {
-                                Toast.makeText(this, "Este correo ya está registrado", Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(this, "Error: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
-                            }
+            db.collection("usuarios")
+                    .whereEqualTo("documento", documento)
+                    .get()
+                    .addOnCompleteListener(queryTask -> {
+                        if (!queryTask.isSuccessful()) {
+                            Toast.makeText(register.this, "Error al verificar documento", Toast.LENGTH_SHORT).show();
+                            return;
                         }
-                    });
+                        if (!queryTask.getResult().isEmpty()) {
+                            // documento ya existe
+                            Toast.makeText(register.this, "El documento ya está registrado", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        // 2) Documento libre -> crear en Firebase Auth
+                        mAuth.createUserWithEmailAndPassword(email, password)
+                                .addOnCompleteListener(authTask -> {
+                                    if (!authTask.isSuccessful()) {
+                                        // error creando cuenta (correo duplicado, email inválido, etc.)
+                                        Exception ex = authTask.getException();
+                                        if (ex instanceof FirebaseAuthUserCollisionException) {
+                                            Toast.makeText(register.this, "Este correo ya está registrado", Toast.LENGTH_SHORT).show();
+                                        } else {
+                                            Toast.makeText(register.this, "Error Auth: " + (ex != null ? ex.getMessage() : "unknown"), Toast.LENGTH_LONG).show();
+                                        }
+                                        return;
+                                    }
+                                    FirebaseUser firebaseUser = mAuth.getCurrentUser();
+                                    if (firebaseUser == null) {
+                                        Toast.makeText(register.this, "Error inesperado al crear usuario", Toast.LENGTH_SHORT).show();
+                                        return;
+                                    }
 
+                                    // Guardar datos adicionales en Firestore exceptuando la contraseña
+                                    Map<String, Object> usuario = new HashMap<>();
+                                    usuario.put("documento", documento);
+                                    usuario.put("nombre", nombre);
+                                    usuario.put("gmail", email);
+                                    usuario.put("uid", firebaseUser.getUid());
+
+                                    db.collection("usuarios")
+                                            .document(firebaseUser.getUid())
+                                            .set(usuario)
+                                            .addOnSuccessListener(aVoid -> {
+                                                Toast.makeText(register.this, "Usuario registrado correctamente", Toast.LENGTH_SHORT).show();
+                                                startActivity(inicio);
+                                                finish();
+                                            })
+                                            .addOnFailureListener(e -> {
+                                                Toast.makeText(register.this, "Error al guardar usuario", Toast.LENGTH_SHORT).show();
+                                                // eliminar usuario de Auth si Firestore falla (para evitar cuentas huérfanas)
+                                                firebaseUser.delete();
+
+                                            });
+                                });
+                    });
         });
+
     }
 }
