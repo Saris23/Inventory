@@ -55,14 +55,18 @@
             android:textSize="16sp"
             android:fontFamily="@font/archivo_regular"
             android:text="Contraseña"/>
-        <EditText
-            android:id="@+id/txtContrasena"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="9dp"
-            android:background="@drawable/bg_card"
-            android:fontFamily="@font/archivo_regular"
-            android:hint="Ingresa tu contraseña"/>
+            app:endIconMode="password_toggle">
+            <com.google.android.material.textfield.TextInputEditText
+                android:background="@drawable/bg_card"
+                android:id="@+id/txtContrasena"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Contraseña"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
         <TextView
             android:id="@+id/txtRecuperarcontra"
             android:layout_width="wrap_content"

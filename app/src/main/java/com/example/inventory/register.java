@@ -90,39 +90,24 @@ public class register extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             FirebaseUser user = mAuth.getCurrentUser();
                             if (user != null) {
+                                // aun no funciona (se busca guardar el usuario en el firestore ligado al mismo UID)
+                                Map<String, Object> userMap = new HashMap<>();
+                                userMap.put("documento", documento);
+                                userMap.put("nombre", nombre);
+                                userMap.put("gmail", email);
+                                //userMap.put("uid", user.getUid());
 
-                                // Validar que el documento no exista
+                                // Guarda el documento bajo la colección 'usuarios' con el UID como ID
                                 db.collection("usuarios")
-                                        .whereEqualTo("documento", documento)
-                                        .get()
-                                        .addOnCompleteListener(task1 -> {
-                                            if (task1.isSuccessful()) {
-                                                if (task1.getResult().isEmpty()) {
-                                                    // Crear el mapa del usuario
-                                                    Map<String, Object> usuario = new HashMap<>();
-                                                    usuario.put("documento", documento);
-                                                    usuario.put("nombre", nombre);
-                                                    usuario.put("gmail", email);
-                                                    usuario.put("uid", user.getUid()); // Ligamos con authentication usando el UID
-
-                                                    // Guardar en Firestore usando el UID como id del documento
-                                                    db.collection("usuarios")
-                                                            .document(user.getUid())
-                                                            .set(usuario)
-                                                            .addOnSuccessListener(aVoid -> {
-                                                                Toast.makeText(this, "Usuario registrado correctamente", Toast.LENGTH_SHORT).show();
-                                                                startActivity(inicio);
-                                                                finish();
-                                                            })
-                                                            .addOnFailureListener(e -> {
-                                                                Toast.makeText(this, "Error al guardar el usuario", Toast.LENGTH_SHORT).show();
-                                                            });
-                                                } else {
-                                                    Toast.makeText(this, "El documento ya está registrado", Toast.LENGTH_SHORT).show();
-                                                }
-                                            } else {
-                                                Toast.makeText(this, "Error al verificar documento", Toast.LENGTH_SHORT).show();
-                                            }
+                                        .document(user.getUid())
+                                        .set(userMap)
+                                        .addOnSuccessListener(aVoid -> {
+                                            Toast.makeText(this, "Registro exitoso", Toast.LENGTH_SHORT).show();
+                                            startActivity(inicio);
+                                            finish();
+                                        })
+                                        .addOnFailureListener(e -> {
+                                            Toast.makeText(this, "Error al guardar usuario", Toast.LENGTH_SHORT).show();
                                         });
                             }
 
