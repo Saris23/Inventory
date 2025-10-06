@@ -48,6 +48,7 @@
             android:background="@drawable/bg_card"
             android:layout_marginBottom="20dp"
             android:fontFamily="@font/archivo_regular"
+            android:inputType="textEmailAddress"
             android:hint="Ingresa tu correo electronico"/>
         <TextView
             android:layout_width="match_parent"

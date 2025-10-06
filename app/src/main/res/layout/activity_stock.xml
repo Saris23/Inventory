@@ -15,7 +15,6 @@
         android:layout_height="120dp"
         android:orientation="horizontal"
         android:background="@color/naranja1">
-
         <!-- Menu -->
         <ImageButton
             android:id="@+id/btnMenu"
@@ -24,7 +23,6 @@
             android:layout_gravity="center"
             android:backgroundTint="@color/vacio"
             android:src="@drawable/ic_menu" />
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -42,7 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="35dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="15dp"
         android:fontFamily="@font/amaranth_bold"
         android:textSize="43sp"
         android:textColor="@color/white"
@@ -60,30 +58,98 @@
         android:fontFamily="@font/poppins_regular"
         android:layout_marginTop="4dp"/>
 
-    <!-- Botón Agregar -->
-    <Button
-        android:id="@+id/btnAgregar"
-        android:layout_width="200dp"
+    <!-- Ingreso de datos -->
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Agregar"
-        android:fontFamily="@font/catamaran_semibold"
-        android:textSize="17sp"
-        android:textColor="@color/naranja2"
-        android:backgroundTint="@color/white"
+        android:layout_marginTop="15dp"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <EditText
+                android:layout_width="210dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="7dp"
+                android:background="@drawable/bg_card"
+                android:hint="Nombre"/>
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card"
+                android:inputType="number"
+                android:hint="Cantidad"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="7dp"
+            android:orientation="horizontal">
+            <EditText
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="7dp"
+                android:background="@drawable/bg_card"
+                android:inputType="number"
+                android:hint="Codigo"/>
+            <EditText
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card"
+                android:inputType="number"
+                android:hint="Precio"/>
+        </LinearLayout>
+    </LinearLayout>
+    <!-- Lista de productos -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerProductos"
+        android:layout_width="350dp"
+        android:layout_height="300dp"
+        android:background="@drawable/bg_card"
+        android:padding="8dp"
+        android:elevation="4dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="10dp"
+        android:clipToPadding="false"
+        android:overScrollMode="never"
+        android:scrollbars="none"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="62dp"/>
+        android:layout_marginHorizontal="12dp"
+        android:backgroundTintMode="src_in"
+        tools:listitem="@layout/item_producto"/>
 
-    <!-- Botón Editar -->
-    <Button
-        android:id="@+id/btnEditar"
-        android:layout_width="200dp"
+    <!-- Botones -->
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Editar"
-        android:fontFamily="@font/catamaran_semibold"
-        android:textSize="17sp"
-        android:textColor="@color/naranja2"
-        android:backgroundTint="@color/white"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="25dp"/>
+        android:layout_marginTop="5dp"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+        <!-- Botón Agregar -->
+        <Button
+            android:id="@+id/btnAgregar"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:text="Agregar"
+            android:fontFamily="@font/catamaran_semibold"
+            android:textSize="17sp"
+            android:textColor="@color/naranja2"
+            android:backgroundTint="@color/white"
+            android:layout_gravity="center_horizontal"/>
 
+        <!-- Botón Editar -->
+        <Button
+            android:id="@+id/btnEditar"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Editar"
+            android:fontFamily="@font/catamaran_semibold"
+            android:textSize="17sp"
+            android:textColor="@color/naranja2"
+            android:backgroundTint="@color/white"
+            android:layout_gravity="center_horizontal"/>
+    </LinearLayout>
 </LinearLayout>
