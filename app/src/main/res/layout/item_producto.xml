@@ -8,63 +8,71 @@
     app:cardCornerRadius="12dp"
     app:cardElevation="3dp"
     app:cardBackgroundColor="@android:color/white">
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="10dp">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical">
-
-            <!-- Nombre del producto -->
-            <TextView
-                android:id="@+id/txtNombreProducto"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:text="Nombre del producto"
-                android:textSize="16sp"
-                android:fontFamily="@font/poppins_regular" />
-
-            <!-- Botón menos -->
-            <ImageButton
-                android:id="@+id/btnMenos"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/ic_deduct"
-                android:contentDescription="Restar"
-                android:padding="5dp" />
-
-            <!-- Cantidad -->
-            <TextView
-                android:id="@+id/txtCantidad"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="25"
-                android:textSize="16sp"
-                android:layout_marginHorizontal="10dp" />
-
-            <!-- Botón más -->
-            <ImageButton
-                android:id="@+id/btnMas"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/ic_add"
-                android:contentDescription="Sumar"
-                android:padding="5dp" />
+                android:orientation="vertical">
+                <!-- Nombre del producto -->
+                <TextView
+                    android:id="@+id/txtNombreProducto"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:text="Nombre del producto"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/poppins_regular" />
+                <TextView
+                    android:id="@+id/txtPrecioProducto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textSize="14sp"
+                    android:text="precio"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <!-- Botón menos -->
+                <ImageButton
+                    android:id="@+id/btnMenos"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/ic_deduct"
+                    android:contentDescription="Restar"
+                    android:padding="5dp" />
+                <!-- Cantidad -->
+                <TextView
+                    android:id="@+id/txtCantidad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="25"
+                    android:textSize="16sp"
+                    android:layout_marginHorizontal="10dp" />
+                <!-- Botón más -->
+                <ImageButton
+                    android:id="@+id/btnMas"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/ic_add"
+                    android:contentDescription="Sumar"
+                    android:padding="5dp" />
+            </LinearLayout>
         </LinearLayout>
-
         <!-- Línea separadora -->
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#DDDDDD"
             android:layout_marginTop="8dp" />
-
     </LinearLayout>
-
 </androidx.cardview.widget.CardView>

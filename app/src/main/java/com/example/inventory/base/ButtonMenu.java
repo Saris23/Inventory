@@ -3,15 +3,18 @@ package com.example.inventory.base;
 import android.content.Intent;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.inventory.MainActivity;
 import com.example.inventory.R;
 import com.example.inventory.historial;
+import com.example.inventory.login;
 import com.example.inventory.perfil;
 import com.example.inventory.startpage;
 import com.example.inventory.stock;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class ButtonMenu extends AppCompatActivity {
     public static void setupMenu(ImageButton btnMenu, AppCompatActivity activity) {
@@ -38,6 +41,8 @@ public class ButtonMenu extends AppCompatActivity {
                     activity.finish();
                     return true;
                 } else if (id == R.id.itLogout) {
+                    FirebaseAuth.getInstance().signOut();
+                    Toast.makeText(activity, "Se ha cerrado su sesión", Toast.LENGTH_SHORT).show();
                     activity.startActivity(new Intent(activity, startpage.class));
                     activity.finish();
                     return true;

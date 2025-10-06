@@ -35,9 +35,9 @@ public class MainActivity extends AppCompatActivity {
         ImageButton btnMenu = findViewById(R.id.btnMenu);
         TextView txtSaludo = findViewById(R.id.txtSaludo);
         ButtonMenu.setupMenu(btnMenu, this);
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        // Instancias de firebase
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        FirebaseUser user = mAuth.getCurrentUser();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser(); // Nos trae el usuario actual
 
         if (user != null) {
             // Obtener el nombre desde Firestore
@@ -55,6 +55,10 @@ public class MainActivity extends AppCompatActivity {
                             txtSaludo.setText("Bienvenido");
                         }
                     });
+        }else{
+            Intent noUser = new Intent(MainActivity.this, login.class);
+            startActivity(noUser);
+            finish();
         }
     }
 }

@@ -82,7 +82,7 @@ public class register extends AppCompatActivity {
                 Toast.makeText(register.this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
                 return;
             }
-
+            // Verificar documento
             db.collection("usuarios")
                     .whereEqualTo("documento", documento)
                     .get()
@@ -96,7 +96,7 @@ public class register extends AppCompatActivity {
                             Toast.makeText(register.this, "El documento ya está registrado", Toast.LENGTH_SHORT).show();
                             return;
                         }
-                        // 2) Documento libre -> crear en Firebase Auth
+                        // Documento libre -> crear en Firebase Auth
                         mAuth.createUserWithEmailAndPassword(email, password)
                                 .addOnCompleteListener(authTask -> {
                                     if (!authTask.isSuccessful()) {
@@ -114,14 +114,13 @@ public class register extends AppCompatActivity {
                                         Toast.makeText(register.this, "Error inesperado al crear usuario", Toast.LENGTH_SHORT).show();
                                         return;
                                     }
-
-                                    // Guardar datos adicionales en Firestore exceptuando la contraseña
+                                    // Crear mapa con datos del usuario
                                     Map<String, Object> usuario = new HashMap<>();
                                     usuario.put("documento", documento);
                                     usuario.put("nombre", nombre);
                                     usuario.put("gmail", email);
                                     usuario.put("uid", firebaseUser.getUid());
-
+                                    // Guardar usuario, exceptuando la contraseña
                                     db.collection("usuarios")
                                             .document(firebaseUser.getUid())
                                             .set(usuario)

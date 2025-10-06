@@ -70,12 +70,14 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <EditText
+                android:id="@+id/txtNProducto"
                 android:layout_width="210dp"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="7dp"
                 android:background="@drawable/bg_card"
                 android:hint="Nombre"/>
             <EditText
+                android:id="@+id/txtCantidad"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_card"
@@ -88,6 +90,7 @@
             android:layout_marginVertical="7dp"
             android:orientation="horizontal">
             <EditText
+                android:id="@+id/txtCodigo"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="7dp"
@@ -95,6 +98,7 @@
                 android:inputType="number"
                 android:hint="Codigo"/>
             <EditText
+                android:id="@+id/txtPrecio"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_card"
@@ -102,6 +106,7 @@
                 android:hint="Precio"/>
         </LinearLayout>
     </LinearLayout>
+
     <!-- Lista de productos -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerProductos"

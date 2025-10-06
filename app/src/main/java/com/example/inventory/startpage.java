@@ -10,6 +10,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class startpage extends AppCompatActivity {
 
     @Override
@@ -38,5 +41,17 @@ public class startpage extends AppCompatActivity {
             startActivity(startInt);
             finish();
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            // Si ya esta logueado va directamente al Main
+            Intent intent = new Intent(startpage.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 }
