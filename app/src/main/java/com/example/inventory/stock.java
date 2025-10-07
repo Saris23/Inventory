@@ -12,19 +12,28 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.inventory.base.ButtonMenu;
+import com.example.inventory.base.Producto;
+import com.example.inventory.base.ProductoAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class stock extends AppCompatActivity {
-
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    private List<Producto> listaProductos = new ArrayList<>();
+    private ProductoAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,8 +53,6 @@ public class stock extends AppCompatActivity {
         EditText txtPrecio = findViewById(R.id.txtPrecio);
         RecyclerView rvLista = findViewById(R.id.recyclerProductos);
         // Instancias de firebase
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         if (user == null) {
             Intent noUser = new Intent(stock.this, login.class);
@@ -53,6 +60,14 @@ public class stock extends AppCompatActivity {
             finish();
             return;
         }
+
+        rvLista.setLayoutManager(new LinearLayoutManager(this));
+        // Llama al modelo
+        // Llama al adapter
+        adapter = new ProductoAdapter(listaProductos);
+        rvLista.setAdapter(adapter);
+        cargarProductos();
+
         btnAgregar.setOnClickListener(view ->{
             String codigo = txtCodigo.getText().toString().trim();
             String nombre = txtNProducto.getText().toString().trim();
@@ -104,5 +119,25 @@ public class stock extends AppCompatActivity {
                     });
         });
 
+    }
+
+    private void cargarProductos() {
+        // Agarra el uid del user
+        String userUid = user.getUid();
+        db.collection("usuarios")
+                .document(userUid)
+                .collection("productos")
+                .addSnapshotListener((value, error) -> {
+                    if (error != null) {
+                        //Log.e("Firestore", "Error al escuchar productos", error);
+                        return;
+                    }
+                    listaProductos.clear();
+                    for (QueryDocumentSnapshot doc : value) {
+                        Producto p = doc.toObject(Producto.class);
+                        listaProductos.add(p);
+                    }
+                    adapter.notifyDataSetChanged();
+                });
     }
 }
