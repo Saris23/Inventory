@@ -4,9 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -19,6 +21,10 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.inventory.base.BaseActivity;
 import com.example.inventory.base.InputUtils;
+import com.example.inventory.base.Producto;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -39,6 +45,8 @@ public class perfil extends AppCompatActivity {
         });
         ImageButton btnMenu = findViewById(R.id.btnMenu);
         BaseActivity.setupMenu(btnMenu, this);
+        Button btnEmail = findViewById(R.id.btnCambiarEmail);
+        Button btnContra = findViewById(R.id.btnCambiarContra);
         etNombre = findViewById(R.id.etNombre);
         etEmail = findViewById(R.id.etEmail);
         if (user == null) {
@@ -48,6 +56,52 @@ public class perfil extends AppCompatActivity {
             return;
         }
         cargarDatosUsuario();
+        btnEmail.setOnClickListener(v -> {
+            BottomSheetDialog dialog = new BottomSheetDialog(perfil.this);
+            View view = LayoutInflater.from(perfil.this).inflate(R.layout.cambiar_contrasena, null);
+            dialog.setContentView(view);
+            EditText edtNuevoCorreo = view.findViewById(R.id.txtCorreoNuevo);
+            EditText edtContrasenaActual = view.findViewById(R.id.txtContraActual);
+            Button btnActualizarCorreo = view.findViewById(R.id.btnActCorreo);
+
+            btnActualizarCorreo.setOnClickListener(btnView -> {
+                String nuevoCorreo = edtNuevoCorreo.getText().toString().trim();
+                String contrasena = edtContrasenaActual.getText().toString().trim();
+
+                if (nuevoCorreo.isEmpty() || contrasena.isEmpty()) {
+                    Toast.makeText(perfil.this, "Completa todos los campos", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (user.getEmail().equalsIgnoreCase(nuevoCorreo)){
+                    Toast.makeText(perfil.this,"El correo es el mismo",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (user != null && user.getEmail() != null) {
+                    AuthCredential credential = EmailAuthProvider.getCredential(user.getEmail(), contrasena);
+                    // Reautenticar antes de cambiar el correo
+                    user.reauthenticate(credential)
+                            .addOnSuccessListener(aVoid -> {
+                                // Crear una cuenta temporal con el nuevo correo
+                                user.verifyBeforeUpdateEmail(nuevoCorreo)
+                                        .addOnSuccessListener(a -> {
+                                            Toast.makeText(perfil.this,
+                                                    "Se envió un correo de verificación al nuevo correo.\nVerifícalo para aplicar el cambio.",
+                                                    Toast.LENGTH_LONG).show();
+                                            dialog.dismiss();
+                                        })
+                                        .addOnFailureListener(e -> {
+                                            Toast.makeText(perfil.this,
+                                                    "Error al enviar verificación: " + e.getMessage(),
+                                                    Toast.LENGTH_SHORT).show();
+                                        });
+                            })
+                            .addOnFailureListener(e -> {
+                                Toast.makeText(perfil.this, "Contraseña incorrecta", Toast.LENGTH_SHORT).show();
+                            });
+                }
+            });
+            dialog.show();
+        });
     }
     private void cargarDatosUsuario() {
         db.collection("usuarios")
@@ -67,9 +121,29 @@ public class perfil extends AppCompatActivity {
                     Toast.makeText(this, "Error al cargar perfil", Toast.LENGTH_SHORT).show();
                 });
     }
+    private void dialogContra(Producto producto) {
+        BottomSheetDialog dialog = new BottomSheetDialog(this);
+        View view = getLayoutInflater().inflate(R.layout.dialog_editar_producto, null);
+        dialog.setContentView(view);
+    }
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         InputUtils.handleTouchOutsideEditText(this, ev);
         return super.dispatchTouchEvent(ev);
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (user != null) {
+            user.reload().addOnSuccessListener(aVoid -> {
+                if (user.isEmailVerified()) {
+                    // Ya está verificado, entonces actualiza en Firestore
+                    FirebaseFirestore db = FirebaseFirestore.getInstance();
+                    db.collection("usuarios")
+                            .document(user.getUid())
+                            .update("gmail", user.getEmail());
+                }
+            });
+        }
     }
 }

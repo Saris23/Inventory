@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,7 +19,8 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainActivity extends AppCompatActivity {
-
+    private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser(); // Nos trae el usuario actual
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,8 +35,6 @@ public class MainActivity extends AppCompatActivity {
         TextView txtSaludo = findViewById(R.id.txtSaludo);
         BaseActivity.setupMenu(btnMenu, this);
         // Instancias de firebase
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser(); // Nos trae el usuario actual
 
         if (user != null) {
             // Obtener el nombre desde Firestore

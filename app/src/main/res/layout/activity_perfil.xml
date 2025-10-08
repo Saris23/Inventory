@@ -7,14 +7,12 @@
     android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".perfil">
-
     <!-- Header -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:orientation="horizontal"
         android:background="@color/naranja2">
-
         <!-- Menu -->
         <ImageButton
             android:id="@+id/btnMenu"
@@ -23,44 +21,27 @@
             android:layout_gravity="center"
             android:backgroundTint="@color/vacio"
             android:src="@drawable/ic_menu" />
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="63dp"
+            android:layout_marginLeft="93dp"
             android:layout_marginTop="18dp"
-            android:text="InvenTory"
+            android:text="Perfil"
             android:fontFamily="@font/amaranth_bold"
             android:textSize="43sp"
             android:textColor="@color/white"/>
     </LinearLayout>
-
-    <!-- Título Perfil -->
+    <!-- Titulo -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="45dp"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/amaranth_bold"
-        android:textSize="43sp"
-        android:textColor="@color/black"
-        android:text="Perfil"/>
-
-    <!-- Titulo1 -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:text="Datos del perfil"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="45dp"
-        android:textStyle="bold"
         android:fontFamily="@font/archivo_variablefont_wdth_wght"
+        android:text="Datos del perfil"
         android:textSize="17sp"
-
-        />
-
-
+        android:textStyle="bold" />
     <!-- Formulario usuario -->
     <LinearLayout
         android:layout_width="300dp"
@@ -73,7 +54,6 @@
             android:layout_height="wrap_content"
             android:textSize="17sp"
             android:text="Nombre:"/>
-
         <EditText
             android:id="@+id/etNombre"
             android:layout_width="match_parent"
@@ -90,21 +70,38 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_card" />
-
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_gravity="center">
+            <Button
+                android:id="@+id/btnCambiarEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:backgroundTint="@color/naranja2"
+                android:textSize="15sp"
+                android:text="Cambiar Email"/>
+            <Button
+                android:id="@+id/btnCambiarContra"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/naranja2"
+                android:textSize="15sp"
+                android:text="Cambiar Contraseña"/>
+        </LinearLayout>
     </LinearLayout>
-
     <!-- Titulo2 -->
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:text="Datos del negocio"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="45dp"
         android:textSize="17sp"
         android:fontFamily="@font/archivo_variablefont_wdth_wght"
         android:textStyle="bold"/>
-
-
     <!-- Formulario Negocio -->
     <LinearLayout
         android:layout_width="300dp"
@@ -117,7 +114,6 @@
             android:layout_height="wrap_content"
             android:textSize="17sp"
             android:text="Nombre del negocio:"/>
-
         <EditText
             android:id="@+id/etNombreNegocio"
             android:layout_width="match_parent"
@@ -134,19 +130,14 @@
             android:layout_width="match_parent"
             android:layout_height="90dp"
             android:background="@drawable/bg_card" />
-
     </LinearLayout>
         <Button
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:layout_gravity="right"
             android:layout_marginRight="30dp"
-            android:layout_height="50dp"
+            android:textSize="15sp"
             android:text="Guardar"
-            android:layout_marginTop="20dp"
-            android:backgroundTint="@color/naranja2"
-            />
-
-
-
-
+            android:backgroundTint="@color/naranja2" />
 </LinearLayout>
