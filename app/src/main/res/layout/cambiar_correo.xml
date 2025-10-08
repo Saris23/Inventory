@@ -9,7 +9,15 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_regular"
         android:textSize="16sp"
-        android:text="Cambiar contraseña"/>
+        android:text="Actualizar correo"/>
+    <EditText
+        android:id="@+id/txtCorreoNuevo"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        android:layout_gravity="center"
+        android:background="@drawable/bg_card"
+        android:hint="Correo nuevo"/>
     <EditText
         android:id="@+id/txtContraActual"
         android:layout_width="350dp"
@@ -18,20 +26,12 @@
         android:layout_gravity="center"
         android:background="@drawable/bg_card"
         android:hint="Contraseña actual"/>
-    <EditText
-        android:id="@+id/txtContraNueva"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="8dp"
-        android:layout_gravity="center"
-        android:background="@drawable/bg_card"
-        android:hint="Contraseña nueva"/>
     <!-- Botón Actualizar -->
     <Button
-        android:id="@+id/btnActContra"
+        android:id="@+id/btnActCorreo"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:text="Cambiar"
+        android:text="Actualizar"
         android:fontFamily="@font/catamaran_semibold"
         android:textSize="17sp"
         android:textColor="@color/white"

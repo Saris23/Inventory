@@ -15,7 +15,7 @@ import com.example.inventory.startpage;
 import com.example.inventory.stock;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class BaseActivity extends AppCompatActivity {
+public class ButtonMenu extends AppCompatActivity {
     public static void setupMenu(ImageButton btnMenu, AppCompatActivity activity) {
         btnMenu.setOnClickListener(v -> {
             PopupMenu popupMenu = new PopupMenu(activity, v);

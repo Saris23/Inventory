@@ -17,7 +17,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.inventory.base.BaseActivity;
+import com.example.inventory.base.ButtonMenu;
 import com.example.inventory.base.InputUtils;
 import com.example.inventory.base.Producto;
 import com.example.inventory.base.ProductoAdapter;
@@ -50,7 +50,7 @@ public class stock extends AppCompatActivity {
         });
         Button btnAgregar = findViewById(R.id.btnAgregar);
         ImageButton btnMenu = findViewById(R.id.btnMenu);
-        BaseActivity.setupMenu(btnMenu, this);
+        ButtonMenu.setupMenu(btnMenu, this);
         EditText txtCodigo = findViewById(R.id.txtCodigo);
         EditText txtNProducto = findViewById(R.id.txtNProducto);
         EditText txtCantidad = findViewById(R.id.txtCantidad);
