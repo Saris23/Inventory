@@ -84,9 +84,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="17sp"
-            android:text="Gmail:"/>
+            android:text="Email:"/>
         <EditText
-            android:id="@+id/etGmail"
+            android:id="@+id/etEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_card" />

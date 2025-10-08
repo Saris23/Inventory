@@ -10,13 +10,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.inventory.MainActivity;
 import com.example.inventory.R;
 import com.example.inventory.historial;
-import com.example.inventory.login;
 import com.example.inventory.perfil;
 import com.example.inventory.startpage;
 import com.example.inventory.stock;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class ButtonMenu extends AppCompatActivity {
+public class BaseActivity extends AppCompatActivity {
     public static void setupMenu(ImageButton btnMenu, AppCompatActivity activity) {
         btnMenu.setOnClickListener(v -> {
             PopupMenu popupMenu = new PopupMenu(activity, v);

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,6 +18,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.inventory.base.InputUtils;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -139,5 +141,10 @@ public class register extends AppCompatActivity {
                     });
         });
 
+    }
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        InputUtils.handleTouchOutsideEditText(this, ev);
+        return super.dispatchTouchEvent(ev);
     }
 }

@@ -9,7 +9,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.example.inventory.base.ButtonMenu;
+import com.example.inventory.base.BaseActivity;
 
 public class historial extends AppCompatActivity {
 
@@ -24,6 +24,6 @@ public class historial extends AppCompatActivity {
             return insets;
         });
         ImageButton btnMenu = findViewById(R.id.btnMenu);
-        ButtonMenu.setupMenu(btnMenu, this);
+        BaseActivity.setupMenu(btnMenu, this);
     }
 }

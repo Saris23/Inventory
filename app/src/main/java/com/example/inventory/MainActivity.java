@@ -1,11 +1,8 @@
 package com.example.inventory;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.widget.ImageButton;
-import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -14,7 +11,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.example.inventory.base.ButtonMenu;
+import com.example.inventory.base.BaseActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -34,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         });
         ImageButton btnMenu = findViewById(R.id.btnMenu);
         TextView txtSaludo = findViewById(R.id.txtSaludo);
-        ButtonMenu.setupMenu(btnMenu, this);
+        BaseActivity.setupMenu(btnMenu, this);
         // Instancias de firebase
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser(); // Nos trae el usuario actual

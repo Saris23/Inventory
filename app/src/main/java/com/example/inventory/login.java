@@ -2,6 +2,7 @@ package com.example.inventory;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -12,6 +13,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.inventory.base.InputUtils;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -63,7 +65,6 @@ public class login extends AppCompatActivity {
             finish();
         });
     }
-
     @Override
     protected void onStart() {
         super.onStart();
@@ -74,5 +75,10 @@ public class login extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
+    }
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        InputUtils.handleTouchOutsideEditText(this, ev);
+        return super.dispatchTouchEvent(ev);
     }
 }

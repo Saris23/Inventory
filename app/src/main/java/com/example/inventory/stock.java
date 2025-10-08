@@ -2,6 +2,7 @@ package com.example.inventory;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,7 +17,8 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.inventory.base.ButtonMenu;
+import com.example.inventory.base.BaseActivity;
+import com.example.inventory.base.InputUtils;
 import com.example.inventory.base.Producto;
 import com.example.inventory.base.ProductoAdapter;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -48,7 +50,7 @@ public class stock extends AppCompatActivity {
         });
         Button btnAgregar = findViewById(R.id.btnAgregar);
         ImageButton btnMenu = findViewById(R.id.btnMenu);
-        ButtonMenu.setupMenu(btnMenu, this);
+        BaseActivity.setupMenu(btnMenu, this);
         EditText txtCodigo = findViewById(R.id.txtCodigo);
         EditText txtNProducto = findViewById(R.id.txtNProducto);
         EditText txtCantidad = findViewById(R.id.txtCantidad);
@@ -175,5 +177,10 @@ public class stock extends AppCompatActivity {
                     .addOnFailureListener(e -> Toast.makeText(this, "Error al actualizar", Toast.LENGTH_SHORT).show());
         });
         dialog.show();
+    }
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        InputUtils.handleTouchOutsideEditText(this, ev);
+        return super.dispatchTouchEvent(ev);
     }
 }
