@@ -1,8 +1,12 @@
 package com.example.inventory;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -14,6 +18,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.inventory.base.InputUtils;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -32,6 +37,7 @@ public class login extends AppCompatActivity {
         });
         Button btnIngresar = findViewById(R.id.btnIngresar);
         Button btnRegistro = findViewById(R.id.btnRegistro);
+        Button btnRecuperar = findViewById(R.id.btnRecuperarcontra);
         EditText txtEmail = findViewById(R.id.txtCorreo);
         EditText txtPass = findViewById(R.id.txtContrasena);
 
@@ -58,11 +64,36 @@ public class login extends AppCompatActivity {
                         }
                     });
         });
-
         btnRegistro.setOnClickListener(view ->{
             Intent intentR = new Intent(login.this, register.class);
             startActivity(intentR);
             finish();
+        });
+        // Boton recuperar contraseña
+        btnRecuperar.setOnClickListener(v ->{
+            BottomSheetDialog dialog = new BottomSheetDialog(login.this);
+            View view = LayoutInflater.from(login.this).inflate(R.layout.recuperar_contrasena, null);
+            dialog.setContentView(view);
+            EditText txtCorreoR = view.findViewById(R.id.txtCorreoR);
+            Button btnRecuperaC = view.findViewById(R.id.btnRecuperar);
+            // Boton del dialog
+            btnRecuperaC.setOnClickListener(btnView ->{
+                String correo = txtCorreoR.getText().toString().trim();
+                if (TextUtils.isEmpty(correo)) {
+                    Toast.makeText(this, "Por favor ingresa tu correo electrónico", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                mAuth.sendPasswordResetEmail(correo)
+                        .addOnCompleteListener(task -> {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(this, "Revisa tu correo para restablecer la contraseña", Toast.LENGTH_SHORT).show();
+                                dialog.dismiss(); // cierra el dialog
+                            } else {
+                                Toast.makeText(this, "Error: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                            }
+                        });
+            });
+            dialog.show();
         });
     }
     @Override

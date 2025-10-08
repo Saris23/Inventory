@@ -72,13 +72,15 @@
                 android:hint="Ingresa tu contraseña"
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
-        <TextView
-            android:id="@+id/txtRecuperarcontra"
+        <Button
+            android:id="@+id/btnRecuperarcontra"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="7dp"
             android:layout_gravity="right"
             android:fontFamily="@font/archivo_regular"
+            android:padding="1dp"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/vacio"
             android:text="Olvidaste tu contraseña?"/>
     </LinearLayout>
 
