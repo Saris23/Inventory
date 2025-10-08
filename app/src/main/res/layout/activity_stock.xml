@@ -8,7 +8,6 @@
     android:orientation="vertical"
     android:background="@color/naranja1"
     tools:context=".stock">
-
     <!-- Header -->
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,37 +26,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="63dp"
+            android:layout_marginLeft="100dp"
             android:layout_marginTop="18dp"
-            android:text="InvenTory"
+            android:text="Stock"
             android:fontFamily="@font/amaranth_bold"
             android:textSize="43sp"
             android:textColor="@color/white"/>
     </LinearLayout>
-
-    <!-- Título Stock -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="35dp"
-        android:layout_marginTop="15dp"
-        android:fontFamily="@font/amaranth_bold"
-        android:textSize="43sp"
-        android:textColor="@color/white"
-        android:text="Stock"/>
-
     <!-- Subtítulo -->
     <TextView
         android:id="@+id/txtSub"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:text="Manten el inventario de tu tienda al dia!"
-        android:layout_marginLeft="35dp"
         android:textColor="@color/white"
         android:textSize="14sp"
         android:fontFamily="@font/poppins_regular"
         android:layout_marginTop="4dp"/>
-
     <!-- Ingreso de datos -->
     <LinearLayout
         android:layout_width="wrap_content"
@@ -111,7 +97,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerProductos"
         android:layout_width="350dp"
-        android:layout_height="300dp"
+        android:layout_height="370dp"
         android:background="@drawable/bg_card"
         android:padding="8dp"
         android:layout_marginBottom="20dp"
@@ -123,7 +109,6 @@
         android:layout_marginHorizontal="12dp"
         android:backgroundTintMode="src_in"
         tools:listitem="@layout/item_producto"/>
-
     <!-- Botones -->
     <LinearLayout
         android:layout_width="wrap_content"
@@ -131,29 +116,29 @@
         android:layout_marginTop="5dp"
         android:layout_gravity="center"
         android:orientation="horizontal">
-        <!-- Botón Agregar -->
-        <Button
-            android:id="@+id/btnAgregar"
-            android:layout_width="150dp"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:text="Agregar"
-            android:fontFamily="@font/catamaran_semibold"
-            android:textSize="17sp"
-            android:textColor="@color/naranja2"
-            android:backgroundTint="@color/white"
-            android:layout_gravity="center_horizontal"/>
-
-        <!-- Botón Editar -->
-        <Button
-            android:id="@+id/btnEditar"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:text="Editar"
-            android:fontFamily="@font/catamaran_semibold"
-            android:textSize="17sp"
-            android:textColor="@color/naranja2"
-            android:backgroundTint="@color/white"
-            android:layout_gravity="center_horizontal"/>
+            android:orientation="vertical">
+            <!-- Botón Agregar -->
+            <Button
+                android:id="@+id/btnAgregar"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="Agregar"
+                android:fontFamily="@font/catamaran_semibold"
+                android:textSize="17sp"
+                android:textColor="@color/naranja2"
+                android:backgroundTint="@color/white"
+                android:layout_gravity="center_horizontal"/>
+        </LinearLayout>
+        <!-- Botón Scanner -->
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/bg_card"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_scanner"/>
     </LinearLayout>
 </LinearLayout>

@@ -2,6 +2,7 @@ package com.example.inventory;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -18,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.inventory.base.ButtonMenu;
 import com.example.inventory.base.Producto;
 import com.example.inventory.base.ProductoAdapter;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
@@ -53,20 +55,19 @@ public class stock extends AppCompatActivity {
         EditText txtPrecio = findViewById(R.id.txtPrecio);
         RecyclerView rvLista = findViewById(R.id.recyclerProductos);
         // Instancias de firebase
-
         if (user == null) {
             Intent noUser = new Intent(stock.this, login.class);
             startActivity(noUser);
             finish();
             return;
         }
-
         rvLista.setLayoutManager(new LinearLayoutManager(this));
-        // Llama al modelo
         // Llama al adapter
-        adapter = new ProductoAdapter(listaProductos);
+        adapter = new ProductoAdapter(this, listaProductos);
         rvLista.setAdapter(adapter);
         cargarProductos();
+        // Llama al bottom dialog de editar
+        adapter.setOnItemClickListener(producto -> mostrarDialog(producto));
 
         btnAgregar.setOnClickListener(view ->{
             String codigo = txtCodigo.getText().toString().trim();
@@ -118,18 +119,17 @@ public class stock extends AppCompatActivity {
                         }
                     });
         });
-
     }
-
     private void cargarProductos() {
         // Agarra el uid del user
         String userUid = user.getUid();
+
         db.collection("usuarios")
                 .document(userUid)
                 .collection("productos")
                 .addSnapshotListener((value, error) -> {
                     if (error != null) {
-                        //Log.e("Firestore", "Error al escuchar productos", error);
+                        Toast.makeText(this,"Error al cargar los productos",Toast.LENGTH_SHORT).show();
                         return;
                     }
                     listaProductos.clear();
@@ -139,5 +139,41 @@ public class stock extends AppCompatActivity {
                     }
                     adapter.notifyDataSetChanged();
                 });
+    }
+    private void mostrarDialog(Producto producto) {
+        BottomSheetDialog dialog = new BottomSheetDialog(this);
+        View view = getLayoutInflater().inflate(R.layout.dialog_editar_producto, null);
+        dialog.setContentView(view);
+
+        EditText etNombre = view.findViewById(R.id.txtNombreEdit);
+        EditText etCantidad = view.findViewById(R.id.txtCantidadEdit);
+        EditText etPrecio = view.findViewById(R.id.txtPrecioEdit);
+        Button btnEditar = view.findViewById(R.id.btnEditar);
+
+        // Rellenar datos actuales del producto
+        etNombre.setText(producto.getNombre());
+        etCantidad.setText(String.valueOf(producto.getCantidad()));
+        etPrecio.setText(String.valueOf(producto.getPrecio()));
+
+        btnEditar.setOnClickListener(v -> {
+            String nuevoNombre = etNombre.getText().toString().trim();
+            int nuevaCantidad = Integer.parseInt(etCantidad.getText().toString());
+            double nuevoPrecio = Double.parseDouble(etPrecio.getText().toString());
+
+            // Actualizar Firestore
+            db.collection("usuarios")
+                    .document(user.getUid())
+                    .collection("productos")
+                    .document(producto.getCodigo())
+                    .update("nombre", nuevoNombre,
+                            "cantidad", nuevaCantidad,
+                            "precio", nuevoPrecio)
+                    .addOnSuccessListener(aVoid -> {
+                        Toast.makeText(this, "Producto actualizado", Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
+                    })
+                    .addOnFailureListener(e -> Toast.makeText(this, "Error al actualizar", Toast.LENGTH_SHORT).show());
+        });
+        dialog.show();
     }
 }

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_regular"
+        android:textSize="16sp"
+        android:text="Editar producto"/>
+    <EditText
+        android:id="@+id/txtNombreEdit"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        android:layout_gravity="center"
+        android:background="@drawable/bg_card"
+        android:hint="Nombre"/>
+    <LinearLayout
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+        <EditText
+            android:id="@+id/txtCantidadEdit"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/bg_card"
+            android:inputType="number"
+            android:hint="Cantidad"/>
+        <EditText
+            android:id="@+id/txtPrecioEdit"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_card"
+            android:inputType="number"
+            android:hint="Precio"/>
+    </LinearLayout>
+    <!-- Botón Editar -->
+    <Button
+        android:id="@+id/btnEditar"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:text="Editar"
+        android:fontFamily="@font/catamaran_semibold"
+        android:textSize="17sp"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/naranja2"
+        android:layout_gravity="center_horizontal"/>
+
+</LinearLayout>
