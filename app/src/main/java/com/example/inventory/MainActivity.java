@@ -2,6 +2,7 @@ package com.example.inventory;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         ImageButton btnMenu = findViewById(R.id.btnMenu);
         TextView txtSaludo = findViewById(R.id.txtSaludo);
         ButtonMenu.setupMenu(btnMenu, this);
+        Button btnIniciarVenta = findViewById(R.id.btnIniciarV);
         // Instancias de firebase
 
         if (user != null) {
@@ -56,5 +58,10 @@ public class MainActivity extends AppCompatActivity {
             startActivity(noUser);
             finish();
         }
+        btnIniciarVenta.setOnClickListener(v ->{
+            Intent venta = new Intent(MainActivity.this, venta.class);
+            startActivity(venta);
+            finish();
+        });
     }
 }

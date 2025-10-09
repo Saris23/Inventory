@@ -125,7 +125,7 @@
 
     <!-- Botón Iniciar Venta -->
     <Button
-        android:id="@+id/btnIniciar"
+        android:id="@+id/btnIniciarV"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="Iniciar Venta"
@@ -138,7 +138,7 @@
 
     <!-- Botón Cerrar Venta -->
     <Button
-        android:id="@+id/btnCerrar"
+        android:id="@+id/btnCerrarV"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="Cerrar Venta"
