@@ -134,11 +134,12 @@
         </LinearLayout>
         <!-- Botón Scanner -->
         <ImageButton
+            android:id="@+id/btnScaner"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginLeft="10dp"
             android:background="@drawable/bg_card"
             android:scaleType="fitCenter"
-            android:src="@drawable/ic_scanner"/>
+            android:src="@drawable/ic_scanner" />
     </LinearLayout>
 </LinearLayout>

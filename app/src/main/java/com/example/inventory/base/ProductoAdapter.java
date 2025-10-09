@@ -73,16 +73,14 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
         // Botón Eliminar
         holder.btnDelete.setOnClickListener(v -> {
             new AlertDialog.Builder(context)
-                    .setTitle("Eliminar producto")
+                    .setTitle("⚠️ Eliminar producto")
                     .setMessage("¿Estás seguro de eliminar \"" + producto.getNombre() + "\"?")
                     .setPositiveButton("Sí, eliminar", (dialog, which) -> {
                         eliminarProductoDeFirestore(producto, position);
                     })
                     .setNegativeButton("Cancelar", (dialog, which) -> dialog.dismiss())
-                    .setIcon(android.R.drawable.ic_dialog_alert)
                     .show();
         });
-
         // Al hacer clic en la tarjeta
         holder.itemView.setOnClickListener(v -> {
             if (listener != null) {

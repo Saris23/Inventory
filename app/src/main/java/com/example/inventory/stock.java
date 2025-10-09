@@ -2,6 +2,7 @@ package com.example.inventory;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -50,6 +51,7 @@ public class stock extends AppCompatActivity {
         });
         Button btnAgregar = findViewById(R.id.btnAgregar);
         ImageButton btnMenu = findViewById(R.id.btnMenu);
+        ImageButton btnScaner = findViewById(R.id.btnScaner);
         ButtonMenu.setupMenu(btnMenu, this);
         EditText txtCodigo = findViewById(R.id.txtCodigo);
         EditText txtNProducto = findViewById(R.id.txtNProducto);
@@ -70,6 +72,10 @@ public class stock extends AppCompatActivity {
         cargarProductos();
         // Llama al bottom dialog de editar
         adapter.setOnItemClickListener(producto -> mostrarDialog(producto));
+
+        // Recibe el codigo que trae el intent del scaner
+        String codBarra = getIntent().getStringExtra("codigobarra");
+        txtCodigo.setText(codBarra);
 
         btnAgregar.setOnClickListener(view ->{
             String codigo = txtCodigo.getText().toString().trim();
@@ -95,6 +101,10 @@ public class stock extends AppCompatActivity {
                             if (!task.getResult().isEmpty()) {
                                 // Ya existe un producto con ese código
                                 Toast.makeText(stock.this, "El código ya está registrado", Toast.LENGTH_SHORT).show();
+                                txtCodigo.setText("");
+                                txtNProducto.setText("");
+                                txtCantidad.setText("");
+                                txtPrecio.setText("");
                             } else {
                                 // Crear mapa con los datos del producto
                                 Map<String, Object> producto = new HashMap<>();
@@ -121,11 +131,25 @@ public class stock extends AppCompatActivity {
                         }
                     });
         });
+        // Boton para el escaner
+        btnScaner.setOnClickListener(v ->{
+            try {
+                Intent scan = new Intent(stock.this, Scanner.class);
+                scan.putExtra("origen", "agregar");
+                startActivity(scan);
+                finish();
+            } catch (Exception e) {
+                // Mostrar el error en logcat
+                Log.e("ScannerError", "Error al abrir el scanner", e);
+
+                // Mostrar un mensaje al usuario
+                Toast.makeText(stock.this, "No se pudo abrir el scanner", Toast.LENGTH_LONG).show();
+            }
+        });
     }
     private void cargarProductos() {
         // Agarra el uid del user
         String userUid = user.getUid();
-
         db.collection("usuarios")
                 .document(userUid)
                 .collection("productos")
