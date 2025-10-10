@@ -56,14 +56,14 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
         holder.txtPrecio.setText("$" + producto.getPrecio());
         holder.txtCantidad.setText(String.valueOf(producto.getCantidad()));
 
-        // Botón ➕ aumenta cantidad
+        // Botón mas
         holder.btnMas.setOnClickListener(v -> {
             int nuevaCantidad = producto.getCantidad() + 1;
             producto.setCantidad(nuevaCantidad);
             holder.txtCantidad.setText(String.valueOf(nuevaCantidad));
             actualizarCantidadFirestore(producto);
         });
-        // Botón ➖ disminuye cantidad
+        // Botón menos
         holder.btnMenos.setOnClickListener(v -> {
             int nuevaCantidad = producto.getCantidad() > 0 ? producto.getCantidad() - 1 : 0;
             producto.setCantidad(nuevaCantidad);

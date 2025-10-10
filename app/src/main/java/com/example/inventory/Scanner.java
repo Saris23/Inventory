@@ -73,7 +73,7 @@ public class Scanner extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             } else if ("vender".equals(origen)) {
-                intent = new Intent(Scanner.this, MainActivity.class);
+                intent = new Intent(Scanner.this, venta.class);
                 startActivity(intent);
                 finish();
             } else {
