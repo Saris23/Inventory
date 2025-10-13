@@ -17,12 +17,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.inventory.base.AdapterVenta;
 import com.example.inventory.base.ProductoVenta;
+import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.WriteBatch;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class venta extends AppCompatActivity {
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -69,10 +77,9 @@ public class venta extends AppCompatActivity {
         btnFinalizar.setOnClickListener(v -> {
             if (listaVenta.isEmpty()) {
                 Toast.makeText(this, "No hay productos en la venta", Toast.LENGTH_SHORT).show();
-            } else {
-                // Aqui se debe realizar los cambios en firestore
-                Toast.makeText(this, "Venta finalizada por $" + total, Toast.LENGTH_SHORT).show();
+                return;
             }
+            finalizarYGuardarVenta();
         });
         // Boton de regreso
         btnRegreso.setOnClickListener(view ->{
@@ -137,4 +144,58 @@ public class venta extends AppCompatActivity {
         total = nuevoTotal;
         txtTotal.setText(String.format("Total: $%.2f", total));
     }
+
+    private void finalizarYGuardarVenta() {
+        // Referencia a la colección de ventas del usuario
+        CollectionReference ventasRef = db.collection("usuarios")
+                .document(user.getUid())
+                .collection("ventas");
+
+        // Prepara los datos para el nuevo documento de venta
+        Map<String, Object> ventaData = new HashMap<>();
+        ventaData.put("fecha", new Timestamp(new Date())); // Guarda la fecha y hora actual
+        ventaData.put("total", total);
+
+        // Convierte la lista de productos a un formato simple para Firestore
+        List<Map<String, Object>> productosVendidos = new ArrayList<>();
+        for (ProductoVenta p : listaVenta) {
+            Map<String, Object> productoMap = new HashMap<>();
+            productoMap.put("codigo", p.getCodigo());
+            productoMap.put("nombre", p.getNombre());
+            productoMap.put("cantidadVendida", p.getCantidad());
+            productoMap.put("precioUnitario", p.getPrecio());
+            productosVendidos.add(productoMap);
+        }
+        ventaData.put("productos", productosVendidos);
+
+        // Usamos WriteBatch para actualizar el stock y guardar la venta en una sola operación
+        WriteBatch batch = db.batch();
+
+        // 1. Añadir la nueva venta al batch
+        batch.set(ventasRef.document(), ventaData); // Crea un documento con ID automático
+
+        // 2. Descontar el stock de cada producto en el batch
+        for (ProductoVenta productoVendido : listaVenta) {
+            // Referencia al documento del producto en el stock
+            DocumentReference productoRef = db.collection("usuarios")
+                    .document(user.getUid())
+                    .collection("productos")
+                    .document(productoVendido.getCodigo());
+
+            // Descontamos la cantidad vendida. Usamos FieldValue para hacerlo de forma segura.
+            batch.update(productoRef, "cantidad", FieldValue.increment(-productoVendido.getCantidad()));
+        }
+
+        // 3. Ejecutar el batch
+        batch.commit().addOnSuccessListener(aVoid -> {
+            Toast.makeText(venta.this, "Venta finalizada y guardada por $" + String.format("%.2f", total), Toast.LENGTH_LONG).show();
+            // Regresar al menú principal después de la venta exitosa
+            Intent intent = new Intent(venta.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }).addOnFailureListener(e -> {
+            Toast.makeText(venta.this, "Error al guardar la venta: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+        });
+    }
 }
+

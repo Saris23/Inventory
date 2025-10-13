@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical"
     tools:context=".historial">
 
@@ -15,7 +16,6 @@
         android:orientation="horizontal"
         android:background="@color/naranja2">
 
-        <!-- Menu -->
         <ImageButton
             android:id="@+id/btnMenu"
             android:layout_width="wrap_content"
@@ -44,4 +44,12 @@
         android:fontFamily="@font/amaranth_bold"
         android:textSize="43sp"
         android:text="Historial"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerHistorial"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="16dp"
+        tools:listitem="@layout/item_venta_diaria"/>
 </LinearLayout>
