@@ -13,6 +13,7 @@ import com.example.inventory.base.ButtonMenu;
 
 public class historial extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,5 +26,8 @@ public class historial extends AppCompatActivity {
         });
         ImageButton btnMenu = findViewById(R.id.btnMenu);
         ButtonMenu.setupMenu(btnMenu, this);
+    }
+
+    private class BaseActivity {
     }
 }

@@ -1,18 +1,16 @@
 package com.example.inventory;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-
 import com.example.inventory.base.ButtonMenu;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -34,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         ImageButton btnMenu = findViewById(R.id.btnMenu);
         TextView txtSaludo = findViewById(R.id.txtSaludo);
         ButtonMenu.setupMenu(btnMenu, this);
-        Button btnIniciarVenta = findViewById(R.id.btnIniciarV);
+        Button btnIniciarVenta = findViewById(R.id.btnIniciar);
         // Instancias de firebase
 
         if (user != null) {

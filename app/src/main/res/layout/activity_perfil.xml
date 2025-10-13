@@ -6,13 +6,15 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".perfil">
     <!-- Header -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="115dp"
         android:orientation="horizontal"
-        android:background="@color/naranja2">
+        android:background="@color/purple"
+        >
         <!-- Menu -->
         <ImageButton
             android:id="@+id/btnMenu"
@@ -21,38 +23,41 @@
             android:layout_gravity="center"
             android:backgroundTint="@color/vacio"
             android:src="@drawable/ic_menu" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="93dp"
+            android:layout_marginLeft="78dp"
             android:layout_marginTop="18dp"
-            android:text="Perfil"
+            android:text="InvenTory"
             android:fontFamily="@font/amaranth_bold"
             android:textSize="43sp"
             android:textColor="@color/white"/>
+
     </LinearLayout>
+
     <!-- Titulo -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="45dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="29dp"
         android:fontFamily="@font/archivo_variablefont_wdth_wght"
         android:text="Datos del perfil"
-        android:textSize="17sp"
+        android:textSize="13sp"
         android:textStyle="bold" />
     <!-- Formulario usuario -->
     <LinearLayout
-        android:layout_width="300dp"
+        android:layout_width="380dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="45dp"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="20dp"
         android:orientation="vertical">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="17sp"
+            android:textSize="12sp"
             android:text="Nombre:"/>
         <EditText
             android:id="@+id/etNombre"
@@ -63,7 +68,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="17sp"
+            android:textSize="12sp"
             android:text="Email:"/>
         <EditText
             android:id="@+id/etEmail"
@@ -80,15 +85,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="5dp"
-                android:backgroundTint="@color/naranja2"
-                android:textSize="15sp"
+                android:backgroundTint="@color/purple"
+                android:textSize="14sp"
                 android:text="Cambiar Email"/>
             <Button
                 android:id="@+id/btnCambiarContra"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/naranja2"
-                android:textSize="15sp"
+                android:backgroundTint="@color/purple"
+                android:textSize="14sp"
                 android:text="Cambiar Contraseña"/>
         </LinearLayout>
     </LinearLayout>
@@ -99,12 +104,12 @@
         android:text="Datos del negocio"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="45dp"
-        android:textSize="17sp"
+        android:textSize="13sp"
         android:fontFamily="@font/archivo_variablefont_wdth_wght"
         android:textStyle="bold"/>
     <!-- Formulario Negocio -->
     <LinearLayout
-        android:layout_width="300dp"
+        android:layout_width="380dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="45dp"
         android:layout_marginTop="7dp"
@@ -112,7 +117,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="17sp"
+            android:textSize="12sp"
             android:text="Nombre del negocio:"/>
         <EditText
             android:id="@+id/etNombreNegocio"
@@ -123,7 +128,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="17sp"
+            android:textSize="12sp"
             android:text="Descripción:"/>
         <EditText
             android:id="@+id/etDescripcion"
@@ -137,7 +142,20 @@
             android:layout_marginTop="20dp"
             android:layout_gravity="right"
             android:layout_marginRight="30dp"
-            android:textSize="15sp"
+            android:textSize="14sp"
             android:text="Guardar"
-            android:backgroundTint="@color/naranja2" />
+            android:backgroundTint="@color/purple" />
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bnv_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:labelVisibilityMode="unlabeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:menu="@menu/menu_inferior" />
+
+
 </LinearLayout>

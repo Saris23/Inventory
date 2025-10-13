@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="20dp"
     android:layout_width="match_parent"
@@ -8,6 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_regular"
+        android:layout_marginLeft="8dp"
         android:textSize="16sp"
         android:text="Editar producto"/>
     <EditText
@@ -26,7 +28,7 @@
         android:orientation="horizontal">
         <EditText
             android:id="@+id/txtCantidadEdit"
-            android:layout_width="100dp"
+            android:layout_width="140dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
             android:background="@drawable/bg_card"
@@ -34,7 +36,7 @@
             android:hint="Cantidad"/>
         <EditText
             android:id="@+id/txtPrecioEdit"
-            android:layout_width="100dp"
+            android:layout_width="140dp"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_card"
             android:inputType="number"
@@ -46,10 +48,11 @@
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:text="Editar"
-        android:fontFamily="@font/catamaran_semibold"
+        android:fontFamily="@font/catamaran_regular"
         android:textSize="17sp"
         android:textColor="@color/white"
-        android:backgroundTint="@color/naranja2"
+        app:cornerRadius="9dp"
+        android:backgroundTint="@color/purple_claro"
         android:layout_gravity="center_horizontal"/>
 
 </LinearLayout>

@@ -6,170 +6,189 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".register"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/fondo_degradado">
 
     <!-- Header -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="169dp"
-        android:layout_gravity="center"
-        android:background="@drawable/fondo_degradado2"
-        android:orientation="vertical">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="58dp"
+            android:layout_marginTop="56dp"
             android:layout_gravity="center_horizontal"
-            android:fontFamily="@font/catamaran_regular"
-            android:textSize="35sp"
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="28sp"
             android:textColor="@color/white"
             android:text="Crea una cuenta nueva"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="8dp"
             android:layout_gravity="center_horizontal"
-            android:fontFamily="@font/poppins_light"
-            android:textSize="18sp"
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="12sp"
             android:textColor="@color/white"
-            android:text="Unete a nosotros y maneja tu negocio"/>
-    </LinearLayout>
+            android:text="Unete a nosotros y mejora tu negocio"/>
 
-    <!-- Formulario registro-->
-    <LinearLayout
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_gravity="center"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:fontFamily="@font/archivo_regular"
-            android:text="Nombre"/>
-        <EditText
-            android:id="@+id/txtName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_card"
-            android:layout_marginBottom="20dp"
-            android:inputType="textPersonName"
-            android:fontFamily="@font/archivo_regular"
-            android:hint="Ingresa tu nombre"/>
-
-        <!-- Apartado de documento -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:fontFamily="@font/archivo_regular"
-            android:text="Documento"/>
+        <!-- Cuadro del fondo -->
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:orientation="horizontal">
-            <EditText
-                android:id="@+id/txtDocument"
-                android:layout_width="200dp"
+            android:layout_width="360dp"
+            android:layout_height="650dp"
+            android:layout_marginTop="36dp"
+            android:layout_gravity="center"
+            android:background="@drawable/fondo_red"
+            android:orientation="vertical">
+
+            <!-- Formulario registro-->
+            <LinearLayout
+                android:layout_width="289dp"
                 android:layout_height="wrap_content"
-                android:inputType="number"
-                android:background="@drawable/bg_card"
-                android:fontFamily="@font/archivo_regular"
-                android:hint="Documento"/>
-            <Space
-                android:layout_width="15dp"
-                android:layout_height="wrap_content"/>
-            <Spinner
-                android:id="@+id/spDocument"
+                android:layout_marginTop="52dp"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="287dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/archivo_regular"
+                    android:text="Nombre"/>
+                <EditText
+                    android:id="@+id/txtName"
+                    android:layout_width="287dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_card"
+                    android:layout_marginBottom="13dp"
+                    android:inputType="textPersonName"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/archivo_regular"
+                    android:hint="Ingresa tu nombre"/>
+
+                <!-- Apartado de documento -->
+                <TextView
+                    android:layout_width="289dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/archivo_regular"
+                    android:text="Documento"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:orientation="horizontal">
+                    <EditText
+                        android:id="@+id/txtDocument"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:background="@drawable/bg_card"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/archivo_regular"
+                        android:hint="Documento"/>
+                    <Space
+                        android:layout_width="7dp"
+                        android:layout_height="wrap_content"/>
+                    <Spinner
+                        android:id="@+id/spDocument"
+                        android:textSize="12sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="end|right"
+                        android:background="@drawable/bg_card"/>
+                </LinearLayout>
+
+                <!-- Campos de txt -->
+                <TextView
+                    android:layout_width="289dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/archivo_regular"
+                    android:text="Gmail"/>
+                <EditText
+                    android:id="@+id/txtEmail"
+                    android:layout_width="287dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_card"
+                    android:layout_marginBottom="13dp"
+                    android:inputType="textEmailAddress"
+                    android:fontFamily="@font/archivo_regular"
+                    android:textSize="12sp"
+                    android:hint="Ingresa tu correo electronico"/>
+                <TextView
+                    android:layout_width="289dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/archivo_regular"
+                    android:text="Contraseña"/>
+                <EditText
+                    android:id="@+id/txtPassword"
+                    android:layout_width="289dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_card"
+                    android:layout_marginBottom="12dp"
+                    android:fontFamily="@font/archivo_regular"
+                    android:inputType="textVisiblePassword"
+                    android:textSize="12sp"
+                    android:hint="Crea una contraseña"/>
+                <TextView
+                    android:layout_width="289dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/archivo_regular"
+                    android:text="Confirmar contraseña"/>
+                <EditText
+                    android:id="@+id/txtConfirmpass"
+                    android:layout_width="289dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_card"
+                    android:fontFamily="@font/archivo_regular"
+                    android:textSize="12sp"
+                    android:inputType="textVisiblePassword"
+                    android:hint="Confirma tu contraseña"/>
+            </LinearLayout>
+
+            <!-- Boton -->
+            <Button
+                android:id="@+id/btnRegistrar"
+                android:layout_width="250dp"
+                android:layout_height="55dp"
+                app:cornerRadius="16dp"
+                android:layout_marginTop="49dp"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/purple"
+                android:fontFamily="@font/archivo_bold"
+                android:textSize="12sp"
+                android:text="Registrar"/>
+
+            <!-- Link a registro -->
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="end|right"
-                android:background="@drawable/bg_card"/>
-        </LinearLayout>
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11sp"
+                    android:fontFamily="@font/archivo_regular"
+                    android:text="Ya te registraste?"/>
+                <Button
+                    android:id="@+id/txtInicioS"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/vacio"
+                    android:padding="5dp"
+                    android:textColor="@color/purple"
+                    android:fontFamily="@font/archivo_regular"
+                    android:textSize="11sp"
+                    android:text="Inicia sesión"/>
+            </LinearLayout>
+            </LinearLayout>
 
-        <!-- Campos de txt -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:fontFamily="@font/archivo_regular"
-            android:text="Gmail"/>
-        <EditText
-            android:id="@+id/txtEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_card"
-            android:layout_marginBottom="20dp"
-            android:inputType="textEmailAddress"
-            android:fontFamily="@font/archivo_regular"
-            android:hint="Ingresa tu correo electronico"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:fontFamily="@font/archivo_regular"
-            android:text="Contraseña"/>
-        <EditText
-            android:id="@+id/txtPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_card"
-            android:layout_marginBottom="20dp"
-            android:fontFamily="@font/archivo_regular"
-            android:inputType="textVisiblePassword"
-            android:hint="Crea una contraseña"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:fontFamily="@font/archivo_regular"
-            android:text="Confirmar contraseña"/>
-        <EditText
-            android:id="@+id/txtConfirmpass"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_card"
-            android:fontFamily="@font/archivo_regular"
-            android:inputType="textVisiblePassword"
-            android:hint="Confirma tu contraseña"/>
+
     </LinearLayout>
-
-    <!-- Boton -->
-    <Button
-        android:id="@+id/btnRegistrar"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:layout_gravity="center"
-        android:backgroundTint="@color/naranja1"
-        android:fontFamily="@font/archivo_bold"
-        android:textSize="17sp"
-        android:text="Registrar"/>
-
-    <!-- Link a registro -->
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
-        android:layout_gravity="center"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/archivo_regular"
-            android:text="Ya te registraste?"/>
-        <Button
-            android:id="@+id/txtInicioS"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/vacio"
-            android:padding="5dp"
-            android:textColor="@color/naranja2"
-            android:fontFamily="@font/archivo_regular"
-            android:text="Inicia sesión"/>
-    </LinearLayout>
-
-</LinearLayout>

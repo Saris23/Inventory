@@ -6,14 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/naranja1"
+    android:background="@color/gris_claro"
     tools:context=".stock">
     <!-- Header -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="115dp"
         android:orientation="horizontal"
-        android:background="@color/naranja1">
+        android:background="@color/purple">
         <!-- Menu -->
         <ImageButton
             android:id="@+id/btnMenu"
@@ -26,30 +26,60 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="100dp"
+            android:layout_marginLeft="85dp"
             android:layout_marginTop="18dp"
-            android:text="Stock"
+            android:text="InvenTory"
             android:fontFamily="@font/amaranth_bold"
-            android:textSize="43sp"
+            android:textSize="39sp"
             android:textColor="@color/white"/>
     </LinearLayout>
+
+    <!-- Titulo -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Stock"
+        android:layout_gravity="center"
+        android:fontFamily="@font/archivo_bold"
+        android:textSize="25sp"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/gris_medio"/>
+
     <!-- Subtítulo -->
     <TextView
         android:id="@+id/txtSub"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Manten el inventario de tu tienda al dia!"
-        android:textColor="@color/white"
-        android:textSize="14sp"
+        android:text="Añade productos y manten tu inventario al dia!"
+        android:textColor="@color/gris_medio"
+        android:textSize="11sp"
         android:fontFamily="@font/poppins_regular"
-        android:layout_marginTop="4dp"/>
+        android:layout_marginTop="7dp"/>
+
+    <!-- Lista de productos -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerProductos"
+        android:layout_width="350dp"
+        android:layout_height="370dp"
+        android:background="@drawable/bg_card_morado"
+        android:padding="7dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="15dp"
+        android:clipToPadding="false"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginHorizontal="12dp"
+        android:backgroundTintMode="src_in"
+        tools:listitem="@layout/item_producto"/>
+
     <!-- Ingreso de datos -->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_gravity="center"
+        android:layout_marginTop="1dp"
+        android:layout_marginLeft="36dp"
         android:orientation="vertical">
         <LinearLayout
             android:layout_width="wrap_content"
@@ -59,13 +89,15 @@
                 android:id="@+id/txtNProducto"
                 android:layout_width="210dp"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="7dp"
+                android:layout_marginRight="13dp"
+                android:textSize="13sp"
                 android:background="@drawable/bg_card"
                 android:hint="Nombre"/>
             <EditText
                 android:id="@+id/txtCantidad"
-                android:layout_width="wrap_content"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
+                android:textSize="13sp"
                 android:background="@drawable/bg_card"
                 android:inputType="number"
                 android:hint="Cantidad"/>
@@ -77,15 +109,17 @@
             android:orientation="horizontal">
             <EditText
                 android:id="@+id/txtCodigo"
-                android:layout_width="200dp"
+                android:layout_width="210dp"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="7dp"
+                android:layout_marginRight="13dp"
+                android:textSize="13sp"
                 android:background="@drawable/bg_card"
                 android:inputType="number"
                 android:hint="Codigo"/>
             <EditText
                 android:id="@+id/txtPrecio"
-                android:layout_width="100dp"
+                android:layout_width="120dp"
+                android:textSize="13sp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_card"
                 android:inputType="number"
@@ -93,53 +127,54 @@
         </LinearLayout>
     </LinearLayout>
 
-    <!-- Lista de productos -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerProductos"
-        android:layout_width="350dp"
-        android:layout_height="370dp"
-        android:background="@drawable/bg_card"
-        android:padding="8dp"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="10dp"
-        android:clipToPadding="false"
-        android:overScrollMode="never"
-        android:scrollbars="none"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginHorizontal="12dp"
-        android:backgroundTintMode="src_in"
-        tools:listitem="@layout/item_producto"/>
+
     <!-- Botones -->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_gravity="center"
+        android:layout_marginTop="7dp"
+        android:layout_marginLeft="30dp"
         android:orientation="horizontal">
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <!-- Botón Agregar -->
-            <Button
-                android:id="@+id/btnAgregar"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:text="Agregar"
-                android:fontFamily="@font/catamaran_semibold"
-                android:textSize="17sp"
-                android:textColor="@color/naranja2"
-                android:backgroundTint="@color/white"
-                android:layout_gravity="center_horizontal"/>
-        </LinearLayout>
         <!-- Botón Scanner -->
         <ImageButton
             android:id="@+id/btnScaner"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_marginLeft="10dp"
             android:background="@drawable/bg_card"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_scanner" />
+        <!-- Titulo escanear-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="7dp"
+            android:text="Escanear"
+            android:layout_gravity="center"
+            android:textColor="@color/gris_medio"
+            android:textSize="12sp"
+            android:fontFamily="@font/poppins_regular"
+            android:layout_marginTop="4dp"/>
+        <!-- Espacio -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:orientation="horizontal">
+        </LinearLayout>
+
+        <!-- Botón Agregar -->
+        <Button
+            android:id="@+id/btnAgregar"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Agregar"
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="13sp"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/purple"
+            app:cornerRadius="11dp"
+            android:layout_gravity="center"/>
+
     </LinearLayout>
 </LinearLayout>

@@ -12,6 +12,8 @@
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:layout_marginTop="7dp"
+        android:layout_marginLeft="9dp"
         android:padding="10dp">
         <LinearLayout
             android:layout_width="match_parent"
@@ -22,21 +24,22 @@
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
                 <!-- Nombre del producto -->
                 <TextView
                     android:id="@+id/txtNombreProd"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Nombre del producto"
-                    android:textSize="16sp"
+                    android:textSize="13sp"
                     android:fontFamily="@font/poppins_regular" />
                 <TextView
                     android:id="@+id/txtPrecioProd"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_regular"
-                    android:textSize="14sp"
-                    android:text="precio"/>
+                    android:textSize="12sp"
+                    android:text="Precio"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -45,8 +48,8 @@
                 <!-- Botón menos -->
                 <ImageButton
                     android:id="@+id/btnMenos"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:background="@drawable/ic_deduct"/>
                 <!-- Cantidad -->
                 <TextView
@@ -54,19 +57,19 @@
                     android:layout_width="28dp"
                     android:layout_height="wrap_content"
                     android:text="250"
-                    android:textSize="16sp"
+                    android:textSize="13sp"
                     android:layout_marginHorizontal="8dp"/>
                 <!-- Botón más -->
                 <ImageButton
                     android:id="@+id/btnMas"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:background="@drawable/ic_add"/>
             </LinearLayout>
             <ImageButton
                 android:id="@+id/btnDelete"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:layout_marginLeft="12dp"
                 android:scaleType="fitCenter"
                 android:background="@drawable/ic_delete"/>
@@ -75,7 +78,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#DDDDDD"
+            android:background="#F3F3F3"
             android:layout_marginTop="8dp" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="20dp"
     android:layout_width="match_parent"
@@ -36,7 +37,8 @@
         android:text="Cambiar"
         android:fontFamily="@font/catamaran_semibold"
         android:textSize="17sp"
+        app:cornerRadius="14dp"
         android:textColor="@color/white"
-        android:backgroundTint="@color/naranja2"
+        android:backgroundTint="@color/purple"
         android:layout_gravity="center_horizontal"/>
 </LinearLayout>

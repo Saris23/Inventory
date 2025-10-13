@@ -127,7 +127,7 @@ public class register extends AppCompatActivity {
                                             .document(firebaseUser.getUid())
                                             .set(usuario)
                                             .addOnSuccessListener(aVoid -> {
-                                                Toast.makeText(register.this, "Usuario registrado correctamente", Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(register.this, "Te has registrado correctamente", Toast.LENGTH_SHORT).show();
                                                 startActivity(inicio);
                                                 finish();
                                             })
