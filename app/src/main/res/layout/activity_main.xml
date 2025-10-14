@@ -8,12 +8,14 @@
     android:orientation="vertical"
     android:background="@android:color/white"
     tools:context=".MainActivity">
+
     <!-- Header -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="115dp"
         android:orientation="horizontal"
-        android:background="@drawable/fondo_degradado2">
+        android:background="@drawable/fondo_degradado">
+
         <!-- Menu -->
         <ImageButton
             android:id="@+id/btnMenu"
@@ -26,128 +28,170 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="63dp"
+            android:layout_marginLeft="85dp"
             android:layout_marginTop="18dp"
             android:text="InvenTory"
             android:fontFamily="@font/amaranth_bold"
-            android:textSize="43sp"
+            android:textSize="39sp"
             android:textColor="@color/white"/>
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="@drawable/degradado_mini"/>
-    <!-- Titulo(saludo) -->
-    <TextView
-        android:id="@+id/txtSaludo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hola, *****"
-        android:textColor="@android:color/black"
-        android:textSize="26sp"
-        android:fontFamily="@font/catamaran_semibold"
-        android:textStyle="bold"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="36dp"/>
 
-    <!-- Subtítulo -->
-    <TextView
-        android:id="@+id/txtSub"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Empieza tu día con las mejores ventas"
-        android:textColor="@color/gray"
-        android:textSize="14sp"
-        android:fontFamily="@font/archivo_medium"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="4dp"/>
+        <!-- Titulo(saludo)-->
+        <TextView
+            android:id="@+id/txtSaludo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hola, *****"
+            android:textColor="@android:color/white"
+            android:textSize="10sp"
+            android:fontFamily="@font/catamaran_semibold"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="1dp"/>
+
+    </LinearLayout>
+
+    <!-- Crear venta titulo -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:padding="16dp"
+        android:background="@color/gris_claro">
+
+        <TextView
+            android:layout_width="168dp"
+            android:layout_height="wrap_content"
+            android:text="Crear Venta"
+            android:fontFamily="@font/archivo_bold"
+            android:textSize="18sp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="23dp"
+            android:textColor="@color/gris_medio"/>
+        </LinearLayout>
 
     <!-- Tarjeta de venta -->
     <LinearLayout
         android:id="@+id/cardVenta"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:orientation="horizontal"
         android:padding="16dp"
         android:background="@drawable/bg_card"
-        android:layout_marginTop="24dp"
+        android:backgroundTint="@color/purple_claro"
+        android:layout_marginTop="20dp"
         android:layout_marginHorizontal="40dp">
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Venta del día:"
+            android:layout_gravity="center"
+            android:text="Tu venta del día:"
             android:fontFamily="@font/archivo_bold"
-            android:textSize="16sp"
-            android:textColor="@color/naranja2"/>
+            android:textSize="14sp"
+            android:textColor="@color/white"/>
 
         <TextView
             android:id="@+id/txtVenta"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="$0"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:textColor="@color/naranja2"/>
+            android:layout_gravity="center"
+            android:textSize="14sp"
+            android:textColor="@color/white"/>
     </LinearLayout>
+
+    <!-- Vendedor -->
+    <TextView
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/archivo_regular"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="26dp"
+        android:textSize="13sp"
+        android:text="Nombre del vendedor:" />
+
+    <EditText
+        android:id="@+id/etNombre"
+        android:layout_width="360dp"
+        android:layout_marginTop="5dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:textSize="13sp"
+        android:background="@drawable/bg_card"
+        android:layout_marginBottom="20dp" />
 
     <!-- Tarjeta de fecha -->
     <LinearLayout
         android:id="@+id/layoutFecha"
-        android:layout_width="match_parent"
+        android:layout_width="395dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="16dp"
-        android:background="@drawable/bg_card"
-        android:layout_marginTop="24dp"
-        android:layout_marginHorizontal="40dp">
+        android:layout_marginLeft="24dp"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:layout_marginTop="1dp"
+        android:layout_marginHorizontal="25dp">
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="360dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:text="Fecha:"
-            android:fontFamily="@font/archivo_bold"
-            android:textSize="16sp"
-            android:textColor="@color/naranja1"/>
+            android:fontFamily="@font/archivo_regular"
+            android:textSize="13sp"
+            android:textColor="@color/gris_medio"/>
 
         <TextView
             android:id="@+id/txtFecha"
-            android:layout_width="wrap_content"
+            android:layout_width="360dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:text="00/00/00"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:textColor="@color/naranja1"/>
+            android:background="@drawable/bg_card"
+            android:textSize="13sp"
+            android:textColor="@color/gris_medio"/>
     </LinearLayout>
-
 
     <!-- Botón Iniciar Venta -->
     <Button
-        android:id="@+id/btnIniciarV"
-        android:layout_width="200dp"
+        android:id="@+id/btnIniciar"
+        android:layout_width="240dp"
         android:layout_height="wrap_content"
+        app:cornerRadius="14dp"
         android:text="Iniciar Venta"
         android:fontFamily="@font/catamaran_semibold"
-        android:textSize="17sp"
+        android:textSize="15sp"
         android:textColor="@android:color/white"
-        android:backgroundTint="@color/naranja1"
+        android:backgroundTint="@color/purple"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="62dp"/>
+        android:layout_marginTop="35dp"/>
 
     <!-- Botón Cerrar Venta -->
     <Button
-        android:id="@+id/btnCerrarV"
-        android:layout_width="200dp"
+        android:id="@+id/btnCerrar"
+        android:layout_width="240dp"
         android:layout_height="wrap_content"
+        app:cornerRadius="14dp"
         android:text="Cerrar Venta"
         android:fontFamily="@font/catamaran_semibold"
-        android:textSize="17sp"
+        android:textSize="15sp"
         android:textColor="@android:color/white"
         android:backgroundTint="@color/black"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="15dp"/>
+        android:layout_marginTop="19dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="1" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bnv_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:labelVisibilityMode="unlabeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:menu="@menu/menu_inferior" />
 
 </LinearLayout>
 

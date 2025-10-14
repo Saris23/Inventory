@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="20dp"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="230dp">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_regular"
+        android:layout_marginTop="18dp"
         android:textSize="16sp"
         android:text="Recuperar contraseña"/>
     <EditText
@@ -18,7 +20,7 @@
         android:layout_gravity="center"
         android:background="@drawable/bg_card"
         android:inputType="textEmailAddress"
-        android:hint="Ingrese su correo"/>
+        android:hint="Ingresa tu correo"/>
     <!-- Botón Actualizar -->
     <Button
         android:id="@+id/btnRecuperar"
@@ -28,6 +30,7 @@
         android:fontFamily="@font/catamaran_semibold"
         android:textSize="17sp"
         android:textColor="@color/white"
-        android:backgroundTint="@color/naranja2"
-        android:layout_gravity="center_horizontal"/>
+        android:backgroundTint="@color/black"
+        android:layout_gravity="center_horizontal"
+        app:cornerRadius="13dp"/>
 </LinearLayout>

@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:orientation="horizontal"
-        android:background="@color/naranja2">
+        android:background="@color/purple">
 
         <ImageButton
             android:id="@+id/btnMenu"

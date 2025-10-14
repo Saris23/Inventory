@@ -13,45 +13,50 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="199dp"
         android:layout_gravity="center_horizontal"
-        android:fontFamily="@font/archivo_regular"
+        android:fontFamily="@font/poppins_extralight"
         android:textColor="@color/white"
-        android:textSize="28sp"
+        android:textSize="35sp"
         android:text="Bienvenido a"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_gravity="center"
+        android:layout_marginTop="5dp"
         android:fontFamily="@font/amaranth_bold"
-        android:textSize="78sp"
+        android:text="InvenTory"
         android:textColor="@color/white"
-        android:text="InvenTory"/>
+        android:textSize="93sp" />
 
     <!-- Botón registro -->
     <Button
-        android:id="@+id/btnRegistrate"
-        android:layout_width="210dp"
-        android:layout_height="60dp"
-        android:text="Registrate"
-        android:fontFamily="@font/archivo_bold"
-        android:textSize="20sp"
-        android:textColor="@color/naranja2"
         android:backgroundTint="@color/white"
+        app:cornerRadius="16dp"
+        android:id="@+id/btnRegistrate"
+        android:layout_width="280dp"
+        android:layout_height="75dp"
+        android:text="Registrate"
+        android:textSize="16sp"
+        android:textColor="@color/purple"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="150dp"/>
+        android:fontFamily="@font/poppins_regular"
+        android:textStyle="bold"
+        android:layout_marginTop="138dp"/>
 
     <!-- Botón inicio sesion -->
     <Button
         android:id="@+id/btnIniciaSesion"
-        android:layout_width="210dp"
-        android:layout_height="60dp"
-        android:text="Inicia sesión"
-        android:fontFamily="@font/archivo_bold"
-        android:textSize="20sp"
-        android:textColor="@color/naranja2"
+        android:layout_width="280dp"
+        android:layout_height="75dp"
+        android:text="Inicia Sesión"
+        android:fontFamily="@font/poppins_regular"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:textColor="@color/purple"
         android:backgroundTint="@color/white"
+        app:cornerRadius="16dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="40dp"/>
+        android:layout_marginTop="60dp"/>
 </LinearLayout>

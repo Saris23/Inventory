@@ -33,21 +33,25 @@
         android:orientation="horizontal">
         <Button
             android:id="@+id/btnBack"
-            android:layout_width="150dp"
+            android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="15dp"
             android:layout_gravity="center"
+            app:cornerRadius="14dp"
             android:backgroundTint="@color/black"
-            android:textSize="18sp"
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="16sp"
             android:text="Regresar"/>
         <Button
             android:id="@+id/btnBarcode"
-            android:layout_width="150dp"
+            android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_gravity="center"
-            android:backgroundTint="@color/black"
-            android:textSize="18sp"
+            android:backgroundTint="@color/purple"
+            android:fontFamily="@font/poppins_regular"
+            app:cornerRadius="14dp"
+            android:textSize="16sp"
             android:text="Aceptar"/>
     </LinearLayout>
 </LinearLayout>

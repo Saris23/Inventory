@@ -37,6 +37,7 @@ public class historial extends AppCompatActivity {
     private HistorialAdapter adapter;
     private List<ventaDiaria> listaVentasDiarias = new ArrayList<>();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -102,5 +103,8 @@ public class historial extends AppCompatActivity {
                         Toast.makeText(historial.this, "Error al cargar el historial.", Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
+
+    private class BaseActivity {
     }
 }

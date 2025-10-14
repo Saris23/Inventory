@@ -10,12 +10,12 @@
     <!-- Header -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="100dp"
         android:orientation="horizontal">
         <ImageButton
             android:id="@+id/btnRegreso"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="59dp"
+            android:layout_height="59dp"
             android:layout_marginLeft="10dp"
             android:layout_gravity="center"
             android:scaleType="centerCrop"
@@ -28,9 +28,9 @@
             android:layout_marginLeft="90dp"
             android:layout_marginTop="18dp"
             android:text="Venta"
-            android:fontFamily="@font/amaranth_bold"
-            android:textSize="43sp"
-            android:textColor="@color/naranja2"/>
+            android:fontFamily="@font/archivo_bold"
+            android:textSize="32sp"
+            android:textColor="@color/black"/>
     </LinearLayout>
     <!-- Lista de productos -->
     <androidx.recyclerview.widget.RecyclerView
@@ -40,7 +40,7 @@
         android:background="@drawable/bg_card"
         android:padding="8dp"
         android:layout_marginBottom="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:clipToPadding="false"
         android:overScrollMode="never"
         android:scrollbars="none"
@@ -50,40 +50,46 @@
         tools:listitem="@layout/item_producto"/>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center">
-        <Button
-            android:id="@+id/btnScanVenta"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="90dp"
-            android:backgroundTint="@color/naranja2"
-            android:textSize="20sp"
-            android:text="+"/>
+        android:layout_height="wrap_content">
         <TextView
             android:id="@+id/etTotalVenta"
-            android:layout_width="wrap_content"
+            android:layout_width="155dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="225dp"
             android:background="@drawable/bg_card"
             android:fontFamily="@font/poppins_regular"
-            android:textSize="20sp"
+            android:textSize="13sp"
             android:text="Total: $000.0"/>
     </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btnScanVenta"
+        android:layout_width="155dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="90dp"
+        android:backgroundTint="@color/purple"
+        app:cornerRadius="11dp"
+        android:layout_marginLeft="225dp"
+        android:textSize="12sp"
+        android:text="Agregar más"/>
+
     <!-- Total -->
     <View
         android:layout_width="350dp"
         android:layout_height="1dp"
         android:layout_gravity="center"
-        android:background="@color/gray"
-        android:layout_marginTop="15dp" />
+        android:background="@color/gris_medio"
+        android:layout_marginTop="20dp" />
+
     <!-- Cuanto de cambio -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginLeft="29dp"
         android:fontFamily="@font/poppins_regular"
-        android:textSize="17sp"
+        android:textSize="13sp"
         android:text="Con cuanto te pagan?"/>
     <LinearLayout
         android:layout_width="match_parent"
@@ -94,10 +100,10 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_card"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginLeft="29dp"
+            android:layout_marginTop="2dp"
             android:fontFamily="@font/poppins_regular"
-            android:textSize="17sp"
+            android:textSize="15sp"
             android:hint="10000"/>
         <TextView
             android:id="@+id/etCambio"
@@ -105,17 +111,20 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="130dp"
             android:fontFamily="@font/poppins_regular"
-            android:textSize="17sp"
+            android:textSize="13sp"
             android:text="Cambio: $1000"/>
     </LinearLayout>
+
     <!-- Boton finalizar -->
     <Button
         android:id="@+id/btnFinalizarV"
-        android:layout_width="150dp"
+        android:layout_width="172dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:layout_gravity="center"
-        android:backgroundTint="@color/naranja2"
-        android:textSize="20sp"
-        android:text="Finalizar"/>
+        android:fontFamily="@font/poppins_regular"
+        android:backgroundTint="@color/black"
+        app:cornerRadius="11dp"
+        android:textSize="13sp"
+        android:text="Finalizar Venta"/>
 </LinearLayout>

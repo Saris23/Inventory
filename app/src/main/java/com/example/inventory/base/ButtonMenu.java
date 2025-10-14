@@ -39,6 +39,10 @@ public class ButtonMenu extends AppCompatActivity {
                     activity.startActivity(new Intent(activity, historial.class));
                     activity.finish();
                     return true;
+            //    } else if (id == R.id.itHome) {
+                    //      activity.startActivity(new Intent(activity, home.class));
+                    //activity.finish();
+                    // return true;
                 } else if (id == R.id.itLogout) {
                     FirebaseAuth.getInstance().signOut();
                     Toast.makeText(activity, "Se ha cerrado su sesión", Toast.LENGTH_SHORT).show();

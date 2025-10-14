@@ -2,6 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:title="Inicio"
+        android:id="@+id/itHome"/>
+    <item
+        android:title="Venta"
         android:id="@+id/itInicio"/>
     <item
         android:title="Stock"
@@ -15,5 +18,4 @@
     <item
         android:title="Cerrar sesión"
         android:id="@+id/itLogout"/>
-
 </menu>

@@ -207,4 +207,5 @@ public class stock extends AppCompatActivity {
         InputUtils.handleTouchOutsideEditText(this, ev);
         return super.dispatchTouchEvent(ev);
     }
+
 }
