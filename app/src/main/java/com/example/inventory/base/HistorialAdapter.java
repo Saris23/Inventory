@@ -36,7 +36,8 @@ public class HistorialAdapter extends RecyclerView.Adapter<HistorialAdapter.Hist
     public void onBindViewHolder(@NonNull HistorialViewHolder holder, int position) {
         ventaDiaria venta = ventasDiarias.get(position);
         holder.txtFecha.setText(dateFormat.format(venta.getFecha()));
-        holder.txtTotal.setText(String.format(Locale.US, "$%.2f", venta.getTotalVendido()));
+        holder.txtTotal.setText(FormateadorDinero.formatear(venta.getTotalVendido()));
+
     }
 
     @Override

@@ -1,21 +1,20 @@
 package com.example.inventory;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.inventory.base.AdapterVenta;
+import com.example.inventory.base.FormateadorDinero;
 import com.example.inventory.base.ProductoVenta;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
@@ -33,28 +32,31 @@ import java.util.List;
 import java.util.Map;
 
 public class venta extends AppCompatActivity {
-    private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    private final FirebaseFirestore db = FirebaseFirestore.getInstance();
     private AdapterVenta adapter;
-    private List<ProductoVenta> listaVenta = new ArrayList<>();
+    private final List<ProductoVenta> listaVenta = new ArrayList<>();
     private TextView txtTotal;
     private double total = 0.0;
+
+    // <-- NUEVO: Declarar los componentes de pago y cambio
+    private EditText txtPago;
+    private TextView etCambio;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_venta);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+
         RecyclerView recyclerVenta = findViewById(R.id.recyclerVenta);
         ImageButton btnRegreso = findViewById(R.id.btnRegreso);
         Button btnScan = findViewById(R.id.btnScanVenta);
         Button btnFinalizar = findViewById(R.id.btnFinalizarV);
         txtTotal = findViewById(R.id.etTotalVenta);
-        // Verifica la sesion
+
+        txtPago = findViewById(R.id.txtPago);
+        etCambio = findViewById(R.id.etCambio);
+
         if (user == null) {
             Intent noUser = new Intent(venta.this, login.class);
             startActivity(noUser);
@@ -64,30 +66,56 @@ public class venta extends AppCompatActivity {
         recyclerVenta.setLayoutManager(new LinearLayoutManager(this));
         adapter = new AdapterVenta(listaVenta, nuevoTotal -> {
             total = nuevoTotal;
-            txtTotal.setText(String.format("Total: $%.2f", total));
+            txtTotal.setText("Total: " + FormateadorDinero.formatear(total));
+            calcularCambio();
         });
         recyclerVenta.setAdapter(adapter);
 
-        // Busca el codigo que trae el escaner
         String codigo = getIntent().getStringExtra("codigobarra");
         if (codigo != null) {
             buscarProductoFirestore(codigo);
         }
-        // Boton de finalizar
+
+        txtPago.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            @Override
+            public void afterTextChanged(Editable s) {
+                calcularCambio();
+            }
+        });
+
+
         btnFinalizar.setOnClickListener(v -> {
             if (listaVenta.isEmpty()) {
                 Toast.makeText(this, "No hay productos en la venta", Toast.LENGTH_SHORT).show();
                 return;
             }
-            finalizarYGuardarVenta();
+
+            String pagoStr = txtPago.getText().toString();
+            if (pagoStr.isEmpty()) {
+                Toast.makeText(this, "Ingresa con cuánto te pagan", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            try {
+                double pagoCliente = Double.parseDouble(pagoStr);
+                if (pagoCliente < total) {
+                    Toast.makeText(this, "El pago es insuficiente", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                finalizarYGuardarVenta();
+            } catch (NumberFormatException e) {
+                Toast.makeText(this, "El valor del pago no es válido", Toast.LENGTH_SHORT).show();
+            }
         });
-        // Boton de regreso
         btnRegreso.setOnClickListener(view ->{
             Intent venta = new Intent(venta.this, MainActivity.class);
             startActivity(venta);
             finish();
         });
-        // Boton al escaner
         btnScan.setOnClickListener(view ->{
             Intent venta = new Intent(venta.this, Scanner.class);
             venta.putExtra("origen", "vender");
@@ -95,6 +123,29 @@ public class venta extends AppCompatActivity {
             finish();
         });
     }
+
+    private void calcularCambio() {
+        String pagoStr = txtPago.getText().toString();
+        if (!pagoStr.isEmpty()) {
+            try {
+                double pagoCliente = Double.parseDouble(pagoStr);
+                double cambio = pagoCliente - total;
+
+                if (cambio >= 0) {
+                    etCambio.setText("Cambio: " + FormateadorDinero.formatear(cambio));
+                } else {
+                    etCambio.setText("Faltan: " + FormateadorDinero.formatear(Math.abs(cambio)));
+                }
+            } catch (NumberFormatException e) {
+                etCambio.setText("Cambio: $ 0");
+            }
+        } else {
+            etCambio.setText("Cambio: $ 0");
+        }
+    }
+
+
+    @SuppressLint("NotifyDataSetChanged")
     private void buscarProductoFirestore(String codigo) {
         if (user == null) {
             Toast.makeText(this, "Usuario no autenticado", Toast.LENGTH_SHORT).show();
@@ -108,22 +159,32 @@ public class venta extends AppCompatActivity {
                 .get()
                 .addOnSuccessListener(documentSnapshot -> {
                     if (documentSnapshot.exists()) {
-                        String nombre = documentSnapshot.getString("nombre");
-                        double precio = documentSnapshot.getDouble("precio");
+                        long stockDisponible = documentSnapshot.getLong("cantidad");
 
-                        // Verificar si ya está en la lista
-                        boolean existe = false;
+                        if (stockDisponible <= 0) {
+                            Toast.makeText(this, "Producto agotado. No hay stock.", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+
+                        ProductoVenta productoEnCarrito = null;
                         for (ProductoVenta p : listaVenta) {
                             if (p.getCodigo().equals(codigo)) {
-                                p.setCantidad(p.getCantidad() + 1);
-                                existe = true;
+                                productoEnCarrito = p;
                                 break;
                             }
                         }
 
-                        if (!existe) {
-                            ProductoVenta producto = new ProductoVenta(codigo, nombre, precio, 1);
-                            listaVenta.add(producto);
+                        if (productoEnCarrito != null) {
+                            if (productoEnCarrito.getCantidad() >= stockDisponible) {
+                                Toast.makeText(this, "No puedes agregar más. Stock máximo alcanzado (" + stockDisponible + ")", Toast.LENGTH_SHORT).show();
+                                return;
+                            }
+                            productoEnCarrito.setCantidad(productoEnCarrito.getCantidad() + 1);
+                        } else {
+                            String nombre = documentSnapshot.getString("nombre");
+                            double precio = documentSnapshot.getDouble("precio");
+                            ProductoVenta productoNuevo = new ProductoVenta(codigo, nombre, precio, 1);
+                            listaVenta.add(productoNuevo);
                         }
 
                         adapter.notifyDataSetChanged();
@@ -142,21 +203,19 @@ public class venta extends AppCompatActivity {
             nuevoTotal += p.getSubtotal();
         }
         total = nuevoTotal;
-        txtTotal.setText(String.format("Total: $%.2f", total));
+        txtTotal.setText("Total: " + FormateadorDinero.formatear(total));
+        calcularCambio();
     }
 
     private void finalizarYGuardarVenta() {
-        // Referencia a la colección de ventas del usuario
         CollectionReference ventasRef = db.collection("usuarios")
                 .document(user.getUid())
                 .collection("ventas");
 
-        // Prepara los datos para el nuevo documento de venta
         Map<String, Object> ventaData = new HashMap<>();
-        ventaData.put("fecha", new Timestamp(new Date())); // Guarda la fecha y hora actual
+        ventaData.put("fecha", new Timestamp(new Date()));
         ventaData.put("total", total);
 
-        // Convierte la lista de productos a un formato simple para Firestore
         List<Map<String, Object>> productosVendidos = new ArrayList<>();
         for (ProductoVenta p : listaVenta) {
             Map<String, Object> productoMap = new HashMap<>();
@@ -168,28 +227,19 @@ public class venta extends AppCompatActivity {
         }
         ventaData.put("productos", productosVendidos);
 
-        // Usamos WriteBatch para actualizar el stock y guardar la venta en una sola operación
         WriteBatch batch = db.batch();
+        batch.set(ventasRef.document(), ventaData);
 
-        // 1. Añadir la nueva venta al batch
-        batch.set(ventasRef.document(), ventaData); // Crea un documento con ID automático
-
-        // 2. Descontar el stock de cada producto en el batch
         for (ProductoVenta productoVendido : listaVenta) {
-            // Referencia al documento del producto en el stock
             DocumentReference productoRef = db.collection("usuarios")
                     .document(user.getUid())
                     .collection("productos")
                     .document(productoVendido.getCodigo());
-
-            // Descontamos la cantidad vendida. Usamos FieldValue para hacerlo de forma segura.
             batch.update(productoRef, "cantidad", FieldValue.increment(-productoVendido.getCantidad()));
         }
 
-        // 3. Ejecutar el batch
         batch.commit().addOnSuccessListener(aVoid -> {
-            Toast.makeText(venta.this, "Venta finalizada y guardada por $" + String.format("%.2f", total), Toast.LENGTH_LONG).show();
-            // Regresar al menú principal después de la venta exitosa
+            Toast.makeText(venta.this, "Venta finalizada y guardada por " + FormateadorDinero.formatear(total), Toast.LENGTH_LONG).show();
             Intent intent = new Intent(venta.this, MainActivity.class);
             startActivity(intent);
             finish();

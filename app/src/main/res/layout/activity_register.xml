@@ -18,7 +18,8 @@
             android:fontFamily="@font/poppins_regular"
             android:textSize="28sp"
             android:textColor="@color/white"
-            android:text="Crea una cuenta nueva"/>
+            android:text="Crea una cuenta nueva"
+            />
 
         <TextView
             android:layout_width="wrap_content"

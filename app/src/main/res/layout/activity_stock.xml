@@ -92,7 +92,8 @@
                 android:layout_marginRight="13dp"
                 android:textSize="13sp"
                 android:background="@drawable/bg_card"
-                android:hint="Nombre"/>
+                android:hint="Nombre"
+                android:textColor="@android:color/black"/>
             <EditText
                 android:id="@+id/txtCantidad"
                 android:layout_width="120dp"
@@ -100,7 +101,8 @@
                 android:textSize="13sp"
                 android:background="@drawable/bg_card"
                 android:inputType="number"
-                android:hint="Cantidad"/>
+                android:hint="Cantidad"
+                android:textColor="@android:color/black"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -115,7 +117,8 @@
                 android:textSize="13sp"
                 android:background="@drawable/bg_card"
                 android:inputType="number"
-                android:hint="Codigo"/>
+                android:hint="Codigo"
+                android:textColor="@android:color/black"/>
             <EditText
                 android:id="@+id/txtPrecio"
                 android:layout_width="120dp"
@@ -123,7 +126,8 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_card"
                 android:inputType="number"
-                android:hint="Precio"/>
+                android:hint="Precio"
+                android:textColor="@android:color/black"/>
         </LinearLayout>
     </LinearLayout>
 

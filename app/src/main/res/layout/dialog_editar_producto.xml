@@ -19,7 +19,8 @@
         android:layout_marginVertical="8dp"
         android:layout_gravity="center"
         android:background="@drawable/bg_card"
-        android:hint="Nombre"/>
+        android:hint="Nombre"
+        android:textColor="@android:color/black"/>
     <LinearLayout
         android:layout_width="350dp"
         android:layout_height="wrap_content"
@@ -33,14 +34,16 @@
             android:layout_marginRight="5dp"
             android:background="@drawable/bg_card"
             android:inputType="number"
-            android:hint="Cantidad"/>
+            android:hint="Cantidad"
+            android:textColor="@android:color/black"/>
         <EditText
             android:id="@+id/txtPrecioEdit"
             android:layout_width="140dp"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_card"
             android:inputType="number"
-            android:hint="Precio"/>
+            android:hint="Precio"
+            android:textColor="@android:color/black"/>
     </LinearLayout>
     <!-- Botón Editar -->
     <Button
