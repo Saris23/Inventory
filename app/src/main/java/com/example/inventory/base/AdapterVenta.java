@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -40,11 +41,15 @@ public class AdapterVenta extends RecyclerView.Adapter<AdapterVenta.ViewHolder> 
         holder.txtNombre.setText(producto.getNombre());
         holder.txtPrecio.setText("$" + producto.getPrecio());
         holder.txtCantidad.setText(String.valueOf(producto.getCantidad()));
-        // Boton menos
+        // Boton mas
         holder.btnMas.setOnClickListener(v -> {
-            producto.setCantidad(producto.getCantidad() + 1);
-            notifyItemChanged(position);
-            actualizarTotal();
+            if (producto.getCantidad() < producto.getStock()) {
+                producto.setCantidad(producto.getCantidad() + 1);
+                notifyItemChanged(holder.getAdapterPosition());
+                actualizarTotal();
+            } else {
+                Toast.makeText(v.getContext(), "Cantidad máxima disponible alcanzada", Toast.LENGTH_SHORT).show();
+            }
         });
         // Boton menos
         holder.btnMenos.setOnClickListener(v -> {

@@ -183,7 +183,7 @@ public class venta extends AppCompatActivity {
                         } else {
                             String nombre = documentSnapshot.getString("nombre");
                             double precio = documentSnapshot.getDouble("precio");
-                            ProductoVenta productoNuevo = new ProductoVenta(codigo, nombre, precio, 1);
+                            ProductoVenta productoNuevo = new ProductoVenta(codigo, nombre, precio, 1,(int) stockDisponible);
                             listaVenta.add(productoNuevo);
                         }
 
