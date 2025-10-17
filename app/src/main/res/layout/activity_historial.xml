@@ -19,21 +19,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="63dp"
+            android:layout_marginLeft="125dp"
             android:layout_marginTop="18dp"
             android:text="InvenTory"
             android:fontFamily="@font/amaranth_bold"
-            android:textSize="43sp"
+            android:textSize="40sp"
             android:textColor="@color/white"/>
     </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="22dp"
         android:layout_gravity="center_horizontal"
-        android:fontFamily="@font/amaranth_bold"
-        android:textSize="43sp"
+        android:fontFamily="@font/archivo_bold"
+        android:textColor="@color/black"
+        android:textSize="30sp"
         android:text="Historial"/>
 
     <androidx.recyclerview.widget.RecyclerView

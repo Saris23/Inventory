@@ -22,6 +22,6 @@
         android:text="$1,500.00"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:textColor="@color/design_default_color_primary" />
+        android:textColor="@color/black" />
 
 </LinearLayout>

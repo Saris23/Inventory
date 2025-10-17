@@ -41,7 +41,7 @@ public class home extends AppCompatActivity {
                             DocumentSnapshot document = task.getResult();
                             if (document != null && document.exists()) {
                                 String nombre = document.getString("nombre");
-                                txtSaludo.setText("Hola, "+nombre);
+                                txtSaludo.setText("Bienvenido, "+nombre);
                             }
                         } else {
                             txtSaludo.setText("Bienvenido");

@@ -12,16 +12,16 @@
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:orientation="horizontal"
-        android:background="@drawable/fondo_degradado">
+        android:background="@color/purple">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="80dp"
+            android:layout_marginLeft="125dp"
             android:layout_marginTop="18dp"
             android:text="InvenTory"
             android:fontFamily="@font/amaranth_bold"
-            android:textSize="43sp"
+            android:textSize="40sp"
             android:textColor="@color/white"/>
 
     </LinearLayout>
@@ -31,20 +31,20 @@
         android:id="@+id/txtSaludo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hola, *****"
+        android:text="Bienvenida, *****"
         android:textColor="@android:color/black"
         android:textSize="26sp"
-        android:fontFamily="@font/catamaran_semibold"
+        android:fontFamily="@font/poppins_regular"
         android:textStyle="bold"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="36dp"/>
+        android:layout_marginTop="46dp"/>
 
     <!-- Subtítulo -->
     <TextView
         android:id="@+id/txtSub"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
-        android:text="Empieza tu día con las mejores ventas"
+        android:text="A una tecnologia que impulsa los barrios"
         android:textColor="@color/gris_medio"
         android:textSize="14sp"
         android:fontFamily="@font/archivo_medium"
@@ -55,32 +55,21 @@
     <LinearLayout
         android:layout_width="370dp"
         android:layout_gravity="center"
-        android:layout_height="140dp"
+        android:layout_height="190dp"
         android:layout_marginTop="20dp"
+        android:background="@color/purple_claro"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/txtSubHome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Quienes somos?"
-            android:textColor="@color/purple"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:fontFamily="@font/archivo_medium"
-
-            android:layout_marginTop="4dp" />
-
-        <TextView
             android:id="@+id/txtsub3"
-            android:layout_width="wrap_content"
+            android:layout_width="330dp"
             android:layout_height="wrap_content"
-            android:text="Somos un equipo que busca facilitar la forma en que gestionas y organizas tu negocio. Nuestra app está pensada para brindarte herramientas simples, rápidas y efectivas que te ayuden a mantener el control de tus productos, tus ventas y tu crecimiento. Creemos en la tecnología al servicio de las personas y en hacer que cada tarea sea más fácil y eficiente."
-            android:textColor="@color/gris_medio"
-            android:orientation="vertical"
-            android:textSize="13sp"
+            android:text="Somos un equipo que busca facilitar la forma en que gestionas y organizas tu negocio. Nuestra app está pensada para brindarte herramientas simples, rápidas y efectivas que te ayuden a mantener el control de tus productos, tus ventas y tu crecimiento."
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            android:textSize="12sp"
             android:fontFamily="@font/archivo_regular"
-            android:layout_marginTop="10dp" />
+            android:layout_marginTop="30dp" />
     </LinearLayout>
     <View
         android:layout_width="match_parent"
