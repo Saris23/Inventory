@@ -60,6 +60,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_card"
+            android:inputType="textPersonName"
             android:layout_marginBottom="20dp" />
         <TextView
             android:layout_width="match_parent"

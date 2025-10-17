@@ -95,6 +95,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
         android:textSize="13sp"
+        android:inputType="textPersonName"
         android:background="@drawable/bg_card"
         android:layout_marginBottom="20dp"
         android:textColor="@android:color/black"/>
