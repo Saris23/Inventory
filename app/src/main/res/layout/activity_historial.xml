@@ -15,15 +15,6 @@
         android:layout_height="120dp"
         android:orientation="horizontal"
         android:background="@color/purple">
-
-        <ImageButton
-            android:id="@+id/btnMenu"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:backgroundTint="@color/vacio"
-            android:src="@drawable/ic_menu" />
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -52,4 +43,6 @@
         android:layout_weight="1"
         android:layout_marginTop="16dp"
         tools:listitem="@layout/item_venta_diaria"/>
+
+    <include layout="@layout/bottom_menu"/>
 </LinearLayout>

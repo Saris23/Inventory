@@ -3,7 +3,7 @@
     <item
         android:title="Inicio"
         android:icon="@drawable/ic_action_home"
-        android:id="@+id/itInicio"/>
+        android:id="@+id/itHome"/>
     <item
         android:title="Stock"
         android:icon="@drawable/ic_action_stock"

@@ -20,47 +20,23 @@ import java.util.Date;
 public class MainActivity extends AppCompatActivity {
     private final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
-
     private TextView txtVenta;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        ImageButton btnMenu = findViewById(R.id.btnMenu);
-        TextView txtSaludo = findViewById(R.id.txtSaludo);
         Button btnIniciarVenta = findViewById(R.id.btnIniciar);
-
         txtVenta = findViewById(R.id.txtVenta);
+        ButtonMenu.setupMenu(this, R.id.itMain);
 
-        ButtonMenu.setupMenu(btnMenu, this);
-
-        if (user != null) {
-            // Obtener el nombre desde Firestore
-            db.collection("usuarios")
-                    .document(user.getUid())
-                    .get()
-                    .addOnCompleteListener(task -> {
-                        if (task.isSuccessful()) {
-                            DocumentSnapshot document = task.getResult();
-                            if (document != null && document.exists()) {
-                                String nombre = document.getString("nombre");
-                                txtSaludo.setText("Hola, "+nombre);
-                            }
-                        } else {
-                            txtSaludo.setText("Bienvenido");
-                        }
-                    });
-
-            cargarVentaDelDia();
-
-        } else {
+        if (user == null) {
             Intent noUser = new Intent(MainActivity.this, login.class);
             startActivity(noUser);
             finish();
+            return;
         }
-
+        cargarVentaDelDia();
         btnIniciarVenta.setOnClickListener(v ->{
             Intent venta = new Intent(MainActivity.this, com.example.inventory.venta.class);
             startActivity(venta);

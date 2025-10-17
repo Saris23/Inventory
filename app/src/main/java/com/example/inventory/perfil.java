@@ -1,5 +1,7 @@
 package com.example.inventory;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -29,6 +31,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class perfil extends AppCompatActivity {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private EditText etNombre, etEmail;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +43,8 @@ public class perfil extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        ImageButton btnMenu = findViewById(R.id.btnMenu);
-        ButtonMenu.setupMenu(btnMenu, this);
+        ImageButton btnLogout = findViewById(R.id.btnLogout);
+        ButtonMenu.setupMenu(this, R.id.itPerfil);
         Button btnEmail = findViewById(R.id.btnCambiarEmail);
         Button btnContra = findViewById(R.id.btnCambiarContra);
         etNombre = findViewById(R.id.etNombre);
@@ -53,6 +56,28 @@ public class perfil extends AppCompatActivity {
             return;
         }
         cargarDatosUsuario();
+        btnLogout.setOnClickListener(v ->{
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Cerrar sesión");
+            builder.setMessage("¿Seguro que deseas cerrar sesión?");
+            builder.setCancelable(true);
+            builder.setPositiveButton("Sí, salir", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    mAuth.signOut();
+                    // Redirigir al login y limpiar la pila de actividades
+                    Intent intent = new Intent(perfil.this, login.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                    finish();
+                }
+            });
+
+            builder.setNegativeButton("Cancelar", null);
+
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        });
         // Boton cambiar correo
         btnEmail.setOnClickListener(v -> {
             BottomSheetDialog dialog = new BottomSheetDialog(perfil.this);

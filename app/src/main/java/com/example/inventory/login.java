@@ -57,7 +57,7 @@ public class login extends AppCompatActivity {
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
                             Toast.makeText(login.this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(login.this, MainActivity.class);
+                            Intent intent = new Intent(login.this, home.class);
                             startActivity(intent);
                         } else {
                             Toast.makeText(login.this, "Credenciales incorrectas", Toast.LENGTH_LONG).show();
@@ -102,7 +102,7 @@ public class login extends AppCompatActivity {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             // Si ya esta logueado va directamente al Main
-            Intent intent = new Intent(login.this, MainActivity.class);
+            Intent intent = new Intent(login.this, home.class);
             startActivity(intent);
             finish();
         }

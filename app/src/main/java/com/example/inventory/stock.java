@@ -50,9 +50,8 @@ public class stock extends AppCompatActivity {
             return insets;
         });
         Button btnAgregar = findViewById(R.id.btnAgregar);
-        ImageButton btnMenu = findViewById(R.id.btnMenu);
         ImageButton btnScaner = findViewById(R.id.btnScaner);
-        ButtonMenu.setupMenu(btnMenu, this);
+        ButtonMenu.setupMenu(this, R.id.itStock);
         EditText txtCodigo = findViewById(R.id.txtCodigo);
         EditText txtNProducto = findViewById(R.id.txtNProducto);
         EditText txtCantidad = findViewById(R.id.txtCantidad);

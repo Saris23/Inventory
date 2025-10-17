@@ -43,10 +43,7 @@ public class historial extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         // EdgeToEdge.enable(this); // Si te da problemas de visualización, puedes comentar esta línea
         setContentView(R.layout.activity_historial);
-
-        ImageButton btnMenu = findViewById(R.id.btnMenu); // Asegúrate de tener este ID en tu toolbar_layout
-        ButtonMenu.setupMenu(btnMenu, this);
-
+        ButtonMenu.setupMenu(this, R.id.itHistorial);
         recyclerHistorial = findViewById(R.id.recyclerHistorial);
         recyclerHistorial.setLayoutManager(new LinearLayoutManager(this));
         adapter = new HistorialAdapter(listaVentasDiarias, this);

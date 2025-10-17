@@ -6,24 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@android:color/white"
-    tools:context=".Home">
-
+    tools:context=".home">
     <!-- Header -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:orientation="horizontal"
         android:background="@drawable/fondo_degradado">
-
-        <!-- Menu -->
-        <ImageButton
-            android:id="@+id/btnMenu"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:backgroundTint="@color/vacio"
-            android:src="@drawable/ic_menu" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -70,17 +59,17 @@
         android:layout_marginTop="20dp"
         android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/txtSubHome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Quienes somos?"
-        android:textColor="@color/purple"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:fontFamily="@font/archivo_medium"
+        <TextView
+            android:id="@+id/txtSubHome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Quienes somos?"
+            android:textColor="@color/purple"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/archivo_medium"
 
-        android:layout_marginTop="4dp" />
+            android:layout_marginTop="4dp" />
 
         <TextView
             android:id="@+id/txtsub3"
@@ -92,11 +81,10 @@
             android:textSize="13sp"
             android:fontFamily="@font/archivo_regular"
             android:layout_marginTop="10dp" />
-
-
-
-
-
     </LinearLayout>
-
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="1" />
+    <include layout="@layout/bottom_menu"/>
 </LinearLayout>
