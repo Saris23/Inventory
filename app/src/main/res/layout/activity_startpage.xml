@@ -28,7 +28,7 @@
         android:fontFamily="@font/amaranth_bold"
         android:text="InvenTory"
         android:textColor="@color/white"
-        android:textSize="93sp" />
+        android:textSize="85sp" />
 
     <!-- Botón registro -->
     <Button
@@ -43,7 +43,7 @@
         android:layout_gravity="center_horizontal"
         android:fontFamily="@font/poppins_regular"
         android:textStyle="bold"
-        android:layout_marginTop="138dp"/>
+        android:layout_marginTop="120dp"/>
 
     <!-- Botón inicio sesion -->
     <Button
@@ -58,5 +58,5 @@
         android:backgroundTint="@color/white"
         app:cornerRadius="16dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="60dp"/>
+        android:layout_marginTop="40dp"/>
 </LinearLayout>

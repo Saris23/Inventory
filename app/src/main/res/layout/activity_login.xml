@@ -14,7 +14,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="114dp"
         android:fontFamily="@font/amaranth_bold"
-        android:textSize="89sp"
+        android:textSize="85sp"
         android:textColor="@color/purple"
         android:text="InvenTory"/>
     <TextView
@@ -96,7 +96,7 @@
         android:id="@+id/btnIngresar"
         android:layout_width="275dp"
         android:layout_height="60dp"
-        android:layout_marginTop="95dp"
+        android:layout_marginTop="85dp"
         android:layout_gravity="center"
         android:backgroundTint="@color/purple"
         android:fontFamily="@font/archivo_bold"
