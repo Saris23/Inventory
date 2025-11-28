@@ -29,6 +29,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+import android.util.Patterns;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -79,6 +80,10 @@ public class register extends AppCompatActivity {
             if (nombre.isEmpty() || documento.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
                 Toast.makeText(register.this, "Debe llenar todos los campos", Toast.LENGTH_SHORT).show();
                 return;
+            }
+            if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                Toast.makeText(register.this, "Por favor, introduce un correo electrónico válido", Toast.LENGTH_SHORT).show();
+                return; // Detiene el flujo si el correo es inválido
             }
             if (!password.equals(confirmPassword)) {
                 Toast.makeText(register.this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
