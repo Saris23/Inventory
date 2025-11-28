@@ -2,9 +2,11 @@ package com.example.inventory;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.MotionEvent;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -15,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.inventory.base.AdapterVenta;
 import com.example.inventory.base.FormateadorDinero;
+import com.example.inventory.base.InputUtils;
 import com.example.inventory.base.ProductoVenta;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
@@ -38,7 +41,7 @@ public class venta extends AppCompatActivity {
     private final List<ProductoVenta> listaVenta = new ArrayList<>();
     private TextView txtTotal;
     private double total = 0.0;
-
+    private String vendedor;
     // <-- NUEVO: Declarar los componentes de pago y cambio
     private EditText txtPago;
     private TextView etCambio;
@@ -53,6 +56,8 @@ public class venta extends AppCompatActivity {
         Button btnScan = findViewById(R.id.btnScanVenta);
         Button btnFinalizar = findViewById(R.id.btnFinalizarV);
         txtTotal = findViewById(R.id.etTotalVenta);
+        SharedPreferences prefs = getSharedPreferences("AppData", MODE_PRIVATE);
+        vendedor = prefs.getString("vendedor_actual", "NN");
 
         txtPago = findViewById(R.id.txtPago);
         etCambio = findViewById(R.id.etCambio);
@@ -86,7 +91,6 @@ public class venta extends AppCompatActivity {
                 calcularCambio();
             }
         });
-
 
         btnFinalizar.setOnClickListener(v -> {
             if (listaVenta.isEmpty()) {
@@ -214,6 +218,7 @@ public class venta extends AppCompatActivity {
 
         Map<String, Object> ventaData = new HashMap<>();
         ventaData.put("fecha", new Timestamp(new Date()));
+        ventaData.put("vendedor",vendedor);
         ventaData.put("total", total);
 
         List<Map<String, Object>> productosVendidos = new ArrayList<>();
@@ -246,6 +251,11 @@ public class venta extends AppCompatActivity {
         }).addOnFailureListener(e -> {
             Toast.makeText(venta.this, "Error al guardar la venta: " + e.getMessage(), Toast.LENGTH_SHORT).show();
         });
+    }
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        InputUtils.handleTouchOutsideEditText(this, ev);
+        return super.dispatchTouchEvent(ev);
     }
 }
 

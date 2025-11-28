@@ -15,8 +15,6 @@
         android:layout_height="120dp"
         android:padding="16dp"
         android:background="@color/gris_claro">
-
-
         <TextView
             android:layout_width="168dp"
             android:layout_height="wrap_content"
@@ -97,7 +95,7 @@
         android:text="Nombre del vendedor:" />
 
     <EditText
-        android:id="@+id/etNombre"
+        android:id="@+id/etVendedor"
         android:layout_width="360dp"
         android:layout_marginTop="5dp"
         android:layout_height="wrap_content"
@@ -106,7 +104,8 @@
         android:inputType="textPersonName"
         android:background="@drawable/bg_card"
         android:layout_marginBottom="20dp"
-        android:textColor="@android:color/black"/>
+        android:textColor="@android:color/black"
+        android:hint="Coloque el nombre del vendedor"/>
 
     <!-- Tarjeta de fecha -->
     <LinearLayout
