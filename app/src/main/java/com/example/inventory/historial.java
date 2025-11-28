@@ -1,5 +1,6 @@
 package com.example.inventory;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -37,7 +38,6 @@ public class historial extends AppCompatActivity {
     private HistorialAdapter adapter;
     private List<ventaDiaria> listaVentasDiarias = new ArrayList<>();
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,16 +48,15 @@ public class historial extends AppCompatActivity {
         recyclerHistorial.setLayoutManager(new LinearLayoutManager(this));
         adapter = new HistorialAdapter(listaVentasDiarias, this);
         recyclerHistorial.setAdapter(adapter);
-
         cargarHistorialVentas();
     }
-
     private void cargarHistorialVentas() {
         if (user == null) {
-            // Manejar caso de usuario no logueado
+            Intent noUser = new Intent(historial.this, login.class);
+            startActivity(noUser);
+            finish();
             return;
         }
-
         db.collection("usuarios")
                 .document(user.getUid())
                 .collection("ventas")
@@ -67,6 +66,7 @@ public class historial extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         // Usamos LinkedHashMap para mantener el orden de inserción (días)
                         Map<String, Double> ventasAgrupadas = new LinkedHashMap<>();
+                        Map<String, String> vendedoresPorDia = new LinkedHashMap<>();
                         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
 
                         for (QueryDocumentSnapshot document : task.getResult()) {
@@ -75,19 +75,24 @@ public class historial extends AppCompatActivity {
                                 Date fecha = timestamp.toDate();
                                 String diaKey = sdf.format(fecha); // Clave única por día
                                 double totalVenta = document.getDouble("total");
+                                String vendedor = document.getString("vendedor");
+                                if (vendedor == null) vendedor = "Sin vendedor";
 
                                 // Agrupar y sumar
                                 double totalActual = ventasAgrupadas.getOrDefault(diaKey, 0.0);
                                 ventasAgrupadas.put(diaKey, totalActual + totalVenta);
+                                vendedoresPorDia.putIfAbsent(diaKey, vendedor);
                             }
                         }
 
                         // Convertir el mapa agrupado a nuestra lista para el adaptador
                         listaVentasDiarias.clear();
                         try {
-                            for (Map.Entry<String, Double> entry : ventasAgrupadas.entrySet()) {
-                                Date fechaDia = sdf.parse(entry.getKey());
-                                listaVentasDiarias.add(new ventaDiaria(fechaDia, entry.getValue()));
+                            for (String diaKey : ventasAgrupadas.keySet()) {
+                                Date fechaDia = sdf.parse(diaKey);
+                                double total = ventasAgrupadas.get(diaKey);
+                                String vendedor = vendedoresPorDia.get(diaKey);
+                                listaVentasDiarias.add(new ventaDiaria(fechaDia,vendedor,total));
                             }
                         } catch (Exception e) {
                             // Manejar error de parseo
@@ -100,8 +105,5 @@ public class historial extends AppCompatActivity {
                         Toast.makeText(historial.this, "Error al cargar el historial.", Toast.LENGTH_SHORT).show();
                     }
                 });
-    }
-
-    private class BaseActivity {
     }
 }

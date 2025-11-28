@@ -105,6 +105,7 @@
             android:layout_marginTop="2dp"
             android:fontFamily="@font/poppins_regular"
             android:textSize="15sp"
+            android:inputType="number"
             android:hint="10000"
             android:textColor="@android:color/black"/>
         <TextView

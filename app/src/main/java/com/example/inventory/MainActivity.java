@@ -70,7 +70,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void cargarVentaDelDia() {
-        if (user == null) return;
+        if (user == null) {
+            Intent noUser = new Intent(MainActivity.this, login.class);
+            startActivity(noUser);
+            finish();
+            return;
+        }
 
         Calendar cal = Calendar.getInstance();
         cal.set(Calendar.HOUR_OF_DAY, 0);
